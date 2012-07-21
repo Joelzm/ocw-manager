@@ -27,6 +27,23 @@ class roles_usuario
      * @ORM\Column(name="nombre", type="string", length=255)
      */
     private $nombre;
+    
+    public function __construct (){
+        $this->usuarios = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /*
+     * @ORM\OneToMay(targetEntity="usuarios", mappedBy="roles_usuario")
+     */
+    private $usuarios;
+    
+    public function setUsuarios(\OCWm\OCWBundle\Entity\usuarios $usuario){
+        $this->usuarios[] = $usuario;
+    }
+    
+    public function getUsuarios(){
+        return $this->usuarios;
+    }
 
 
     /**
