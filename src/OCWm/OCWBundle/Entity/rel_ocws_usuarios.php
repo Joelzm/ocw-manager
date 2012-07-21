@@ -21,7 +21,7 @@ class rel_ocws_usuarios
      */
     private $id;
     
-     /*
+     /**
      * @ORM\ManyToOne(targetEntity="usuarios", inversedBy="rel_ocws_usuarios")
      * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * @return integer
@@ -36,7 +36,7 @@ class rel_ocws_usuarios
         return $this->usuario;
     }
     
-    /*
+    /**
      * @ORM\ManyToOne(targetEntity="ocws", inversedBy="rel_ocws_usuarios")
      * @ORM\JoinColumn(name="ocw_id", referencedColumnName="id")
      * @return integer
@@ -51,14 +51,14 @@ class rel_ocws_usuarios
         return $this->ocw;
     }
     
-    /*
-     * @ORM\ManyToOne(targetEntity="roles_ocws", inversedBy="rel_ocws_usuarios")
+    /**
+     * @ORM\ManyToOne(targetEntity="roles_ocw", inversedBy="rel_ocws_usuarios")
      * @ORM\JoinColumn(name="rol_ocw_id", referencedColumnName="id")
      * @return integer
      */
     private $rol_ocw;
     
-    public function setRolOcw(\OCWm\OCWBundle\Entity\roles_ocws $rol_ocw){
+    public function setRolOcw(\OCWm\OCWBundle\Entity\roles_ocw $rol_ocw){
         $this->rol_ocw = $rol_ocw;
     }
     

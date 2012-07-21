@@ -28,7 +28,7 @@ class tipos_pregunta
      */
     private $nombre;
 
-    /*
+    /**
      * @ORM\OneToMany(targetEntity="preguntas", mappedBy="tipos_pregunta")
      */
     private $preguntas;

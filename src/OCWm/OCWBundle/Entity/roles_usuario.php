@@ -32,8 +32,8 @@ class roles_usuario
         $this->usuarios = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
-    /*
-     * @ORM\OneToMay(targetEntity="usuarios", mappedBy="roles_usuario")
+    /**
+     * @ORM\OneToMany(targetEntity="usuarios", mappedBy="roles_usuario")
      */
     private $usuarios;
     

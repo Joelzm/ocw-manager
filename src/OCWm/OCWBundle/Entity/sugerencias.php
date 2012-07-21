@@ -36,7 +36,7 @@ class sugerencias
     private $creado;
 
 
-    /*
+    /**
      * @ORM\ManyToOne(targetEntity="usuarios", inversedBy="sugerencias")
      * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * @return integer
@@ -51,7 +51,7 @@ class sugerencias
         return $this->usuario;
     }
     
-    /*
+    /**
      * @ORM\ManyToOne(targetEntity="ocws", inversedBy="sugerencias")
      * @ORM\JoinColumn(name="ocw_id", referencedColumnName="id")
      * @return integer

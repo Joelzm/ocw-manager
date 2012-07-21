@@ -28,9 +28,9 @@ class preguntas
      */
     private $contenido;
 
-    /*
+    /**
      * @ORM\ManyToOne(targetEntity="evaluaciones", inversedBy="preguntas")
-     * @ORM\JoinColumn(name="evaluacion_id" referencedColumnName="id")
+     * @ORM\JoinColumn(name="evaluacion_id", referencedColumnName="id")
      * @return integer;
      */
     private $evaluacion;
@@ -43,8 +43,8 @@ class preguntas
         return $this->evaluacion;
     }
     
-    /*
-     * @RM\ManyToOne(targetEntity="tipos_pregunta", inversedBy="preguntas")
+    /**
+     * @ORM\ManyToOne(targetEntity="tipos_pregunta", inversedBy="preguntas")
      * @ORM\JoinColumn(name="tipo_pregunta_id", referencedColumnName="id")
      * @return integer
      */
@@ -58,7 +58,7 @@ class preguntas
         return $this->tipo_pregunta;
     }
     
-    /*
+    /**
      * @ORM\OneToMany(targetEntity="respuestas", mappedBy="preguntas")
      */
     private $repuestas;

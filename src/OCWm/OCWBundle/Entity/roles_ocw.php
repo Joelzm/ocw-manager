@@ -33,8 +33,8 @@ class roles_ocw
         $this->rel_ocws_usuarios = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
-    /*
-     * @ORM\OneToMany(targetEntity="rel_ocws_usuarios", mappedBy="roles_ocws")
+    /**
+     * @ORM\OneToMany(targetEntity="rel_ocws_usuarios", mappedBy="roles_ocw")
      */
     private $rel_ocws_usuarios;
     

@@ -35,7 +35,7 @@ class respuestas
      */
     private $correcta;
 
-    /*
+    /**
      * @ORM\ManyToOne(targetEntity="preguntas", inversedBy="respuestas")
      * @ORM\JoinColumn(name="pregunta_id", referencedColumnName="id")
      * @return integer

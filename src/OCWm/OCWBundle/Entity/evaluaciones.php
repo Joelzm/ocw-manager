@@ -29,6 +29,21 @@ class evaluaciones
     private $nombre;
     
     /**
+     * @ORM\ManyToOne(targetEntity="ocws", inversedBy="evaluaciones") 
+     * @ORM\JoinColumn(name="ocw_id", referencedColumnName="id")
+     * @return integer
+     */
+    private $ocw;
+    
+    public function setOcw(\OCWm\OCWBundle\Entity\ocws $ocw){
+        $this->ocw = $ocw;
+    }
+    
+    public function getOcw(){
+        return $this->ocw;
+    }
+            
+    /**
      * @ORM\OneToMany(targetEntity="preguntas", mappedBy="evaluaciones")
      */
     private $preguntas;

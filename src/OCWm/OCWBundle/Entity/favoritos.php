@@ -21,7 +21,7 @@ class favoritos
      */
     private $id;
     
-    /*
+    /**
      * @ORM\ManyToOne(targetEntity="usuarios", inversedBy="favoritos")
      * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * @return integer
@@ -36,7 +36,7 @@ class favoritos
         return $this->usuario;
     }
     
-    /*
+    /**
      * @ORM\ManyToOne(targetEntity="ocws", inversedBy="favoritos")
      * @ORM\JoinColumn(name="ocw_id", referencedColumnName="id")
      * @return integer

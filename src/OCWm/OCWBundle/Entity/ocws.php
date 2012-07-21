@@ -198,7 +198,7 @@ class ocws
         $this->rel_ocws_usuarios = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
-    /*
+    /**
      * @ORM\OneToMany(targetEntity="rel_ocws_usuarios", mappedBy="ocws")
      */
     private $rel_ocws_usuarios;

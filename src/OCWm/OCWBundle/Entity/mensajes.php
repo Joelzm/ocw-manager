@@ -36,7 +36,7 @@ class mensajes
     private $contenido;
 
     
-    /*
+    /**
      * @ORM\ManyToOne(targetEntity="usuarios", inversedBy="mensajes")
      * @ORM\JoinColumn(name="remitente_id", referencedColumnName="id")
      * @return integer
@@ -51,7 +51,7 @@ class mensajes
         return $this->remitente;
     }
     
-    /*
+    /**
      * @ORM\ManyToOne(targetEntity="usuarios", inversedBy="mensajes")
      * @ORM\JoinColumn(name="destinatario_id", referencedColumnName="id")
      * @return integer
