@@ -29,6 +29,23 @@ class tipos_recurso
     private $nombre;
 
 
+    public function __contruct(){
+        $this->recursos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="recursos", mappedBy="tipos_recursos")
+     */
+    private $recursos;
+    
+    public function addRecursos(\OCWm\OCWBundle\Entity\recursos $recurso){
+        $this->recursos[] = $recurso;
+    }
+    
+    public function getRecursos(){
+        return $this->recursos;
+    }
+    
     /**
      * Get id
      *

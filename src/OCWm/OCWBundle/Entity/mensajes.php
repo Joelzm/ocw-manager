@@ -35,6 +35,36 @@ class mensajes
      */
     private $contenido;
 
+    
+    /*
+     * @ORM\ManyToOne(targetEntity="usuarios", inversedBy="mensajes")
+     * @ORM\JoinColumn(name="remitente_id", referencedColumnName="id")
+     * @return integer
+     */
+    private $remitente;
+    
+    public function setRemitente(\OCWm\OCWBundle\Entity\usuarios $remitente){
+        $this->remitente = $remitente;
+    }
+    
+    public function getRemitente(){
+        return $this->remitente;
+    }
+    
+    /*
+     * @ORM\ManyToOne(targetEntity="usuarios", inversedBy="mensajes")
+     * @ORM\JoinColumn(name="destinatario_id", referencedColumnName="id")
+     * @return integer
+     */
+    private $destinatario;
+    
+    public function setDestinatario(\OCWm\OCWBundle\Entity\usuarios $destinatario){
+        $this->destinatario = $destinatario;
+    }
+    
+    public function getDestinatario(){
+        return $this->destinatario;
+    }
 
     /**
      * Get id

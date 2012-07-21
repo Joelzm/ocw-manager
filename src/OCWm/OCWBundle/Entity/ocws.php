@@ -139,6 +139,34 @@ class ocws
         $this->favoritos = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sugerencias = new \Doctrine\Common\Collections\ArrayCollection();
         $this->hilos_discusion = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->recursos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->rel_ocws_usuarios = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /*
+     * @ORM\OneToMany(targetEntity="rel_ocws_usuarios", mappedBy="ocws")
+     */
+    private $rel_ocws_usuarios;
+    
+    public function addRelOcwsUsuarios(\OCWm\OCWBundle\Entity\rel_ocws_usuarios $rel_ocw_usuario){
+        $this->rel_ocws_usuarios[] = $rel_ocw_usuario;
+    }
+    
+    public function getRelOcwsUsuarios(){
+        return $this->rel_ocws_usuarios;
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="recursos", mappedBy="ocws")
+     */
+    private $recursos;
+    
+    public function addRecursos(\OCWm\OCWBundle\Entity\recursos $recurso){
+        $this->recursos[] = $recurso;
+    }
+    
+    public function getRecursos(){
+        return $this->recursos;
     }
     
     /**

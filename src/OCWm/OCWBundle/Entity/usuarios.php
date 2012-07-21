@@ -75,6 +75,33 @@ class usuarios
     public function __contruct(){
         $this->favoritos = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sugerencias = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->rel_ocws_usuarios = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /*
+     * @ORM\OneToMany(targetEntity="rel_ocws_usuarios", mappedBy="usuarios")
+     */
+    private $rel_ocws_usuarios;
+    
+    public function addRelOcwsUsuarios(\OCWm\OCWBundle\Entity\rel_ocws_usuarios $rel_ocw_usuario){
+        $this->rel_ocws_usuarios[] = $rel_ocw_usuario;
+    }
+    
+    public function getRelOcwsUsuarios(){
+        return $this->rel_ocws_usuarios;
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="mensajes", mappedBy="usuarios")
+     */
+    private $mensajes;
+    
+    public function addMensajes(\OCWm\OCWBundle\Entity\mensajes $mensaje){
+        $this->mensajes[] = $mensaje;
+    }
+    
+    public function getMensajes(){
+        return $this->mensajes;
     }
     
     /**

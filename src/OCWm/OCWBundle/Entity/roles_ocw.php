@@ -28,6 +28,23 @@ class roles_ocw
      */
     private $nombre;
 
+    
+    public function __construct(){
+        $this->rel_ocws_usuarios = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /*
+     * @ORM\OneToMany(targetEntity="rel_ocws_usuarios", mappedBy="roles_ocws")
+     */
+    private $rel_ocws_usuarios;
+    
+    public function addRelOcwsUsuarios(\OCWm\OCWBundle\Entity\rel_ocws_usuarios $rel_ocw_usuario){
+        $this->rel_ocws_usuarios[] = $rel_ocw_usuario;
+    }
+    
+    public function getRelOcwsUsuarios(){
+        return $this->rel_ocws_usuarios;
+    }
 
     /**
      * Get id

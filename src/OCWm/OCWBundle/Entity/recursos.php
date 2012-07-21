@@ -34,6 +34,36 @@ class recursos
      * @ORM\Column(name="nombre", type="string", length=255)
      */
     private $nombre;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="ocws", inversedBy="recursos")
+     * @ORM\JoinColumn(name="ocw_id", referencedColunmName="id")
+     * @return integer
+     */
+    private $ocw;
+    
+    public function setOcw(\OCWm\OCWBundle\Entity\ocws $ocw){
+        $this->ocw = $ocw;
+    }
+    
+    public function getOcw(){
+        return $this->ocw;
+    }
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="tipos_recurso", inversedBy="recursos")
+     * @ORM\JoinColumn(name="tipo_recurso_id", referencedColunmName="id")
+     * @return integer
+     */
+    private $tipo_recurso;
+    
+    public function setTipoRecurso(\OCWm\OCWBundle\Entity\tipos_recurso $tipo_recurso){
+        $this->tipo_recurso = $tipo_recurso;
+    }
+    
+    public function getTipoRecurso(){
+        return $this->tipo_recurso;
+    }
 
 
     /**
