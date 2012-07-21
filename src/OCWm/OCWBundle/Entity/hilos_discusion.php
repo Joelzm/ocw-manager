@@ -3,6 +3,7 @@
 namespace OCWm\OCWBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * OCWm\OCWBundle\Entity\hilos_discusion
@@ -27,6 +28,51 @@ class hilos_discusion
      * @ORM\Column(name="nombre", type="string", length=255)
      */
     private $nombre;
+    
+    /**
+     * @var date $creado 
+     * @ORM\Column(name="creado", type="date")
+     * @Gedmo\Timestampable(on="create")
+     */
+    private $creado;
+    
+    /**
+     *
+     * @var date $actualizado
+     * @ORM\Column(name="actualizado", type="date")
+     * @Gedmo\Timestampable(on="update")
+     */
+    
+    public function setCreado($creado){
+        $this->creado = $creado;
+    }
+    
+    /**
+     * Get creado
+     * @return date 
+     */
+    public function getCreado(){
+        return $this->creado;
+    }
+    
+    private $actualizado;
+    
+    /**
+     * Set actualizado
+     * @param date $creado 
+     */
+    
+    public function setActualizado($actualizado){
+        $this->actualizado = $actualizado;
+    }
+    
+    /**
+     * Get actualizado
+     * @return date 
+     */
+    public function getActualizado(){
+        return $this->actualizado;
+    }
     
     
     /**

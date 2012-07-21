@@ -3,6 +3,7 @@
 namespace OCWm\OCWBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * OCWm\OCWBundle\Entity\ocws
@@ -25,6 +26,7 @@ class ocws
      * @var string $nombre
      *
      * @ORM\Column(name="nombre", type="string", length=255)
+     * @Gedmo\Slugable()
      */
     private $nombre;
 
@@ -34,6 +36,59 @@ class ocws
      * @ORM\Column(name="descripcion", type="text")
      */
     private $descripcion;
+    
+    /**
+     * @var date $creado 
+     * @ORM\Column(name="creado", type="date")
+     * @Gedmo\Timestampable(on="create")
+     */
+    private $creado;
+    
+    /**
+     *
+     * @var date $actualizado
+     * @ORM\Column(name="actualizado", type="date")
+     * @Gedmo\Timestampable(on="update")
+     */
+    
+    public function setCreado($creado){
+        $this->creado = $creado;
+    }
+    
+    /**
+     * Get creado
+     * @return date 
+     */
+    public function getCreado(){
+        return $this->creado;
+    }
+    
+    private $actualizado;
+    
+    /**
+     * Set actualizado
+     * @param date $creado 
+     */
+    
+    public function setActualizado($actualizado){
+        $this->actualizado = $actualizado;
+    }
+    
+    /**
+     * Get actualizado
+     * @return date 
+     */
+    public function getActualizado(){
+        return $this->actualizado;
+    }
+    
+    /**
+     *
+     * @var srting $slug
+     * @ORM\Column(name="slug", type="string", length=500) 
+     * @Gedmo\Slug(style="camel", separator="_", updatable=false, unique=true)
+     */
+    private $slug;
 
     /**
      * @var integer $val_pos
@@ -270,7 +325,23 @@ class ocws
     {
         return $this->descripcion;
     }
-
+    
+    
+    /**
+     * Set slug
+     * @param string $slug
+     */
+    public function setSlug($slug){
+        $this->slug = $slug;
+    }
+    
+    /**
+     * Get slug
+     * @return string 
+     */
+    public function getSlug(){
+        return $this->slug;
+    }
     /**
      * Set val_pos
      *
