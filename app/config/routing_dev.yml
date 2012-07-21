@@ -1,5 +1,5 @@
 _welcome:
-    pattern:  /bienvenia
+    pattern:  /bienvenida
     defaults: { _controller: AcmeDemoBundle:Welcome:index }
 
 _demo_secured:
