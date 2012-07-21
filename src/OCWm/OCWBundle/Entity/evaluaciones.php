@@ -27,7 +27,23 @@ class evaluaciones
      * @ORM\Column(name="nombre", type="string", length=255)
      */
     private $nombre;
-
+    
+    /**
+     * @ORM\OneToMany(targetEntity="preguntas", mappedBy="evaluaciones")
+     */
+    private $preguntas;
+    
+    public function __contruct (){
+        $this->preguntas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    public function addPreguntas(\OCWm\OCWBundle\Entity\preguntas $pregunta){
+        $this->preguntas[] = $pregunta;
+    }
+    
+    public function getPreguntas(){
+        return $this->preguntas;
+    }
 
     /**
      * Get id

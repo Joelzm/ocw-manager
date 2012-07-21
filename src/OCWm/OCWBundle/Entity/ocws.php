@@ -119,6 +119,38 @@ class ocws
      */
     private $proyectos_clase;
 
+    /**
+     * @ORM\ManyToOne(tagetEntity="areas_conocimiento", inversedBy="ocws")
+     * @ORM\JoinColumn(name="area_conocimiento_id", referencedColumnName="id")
+     * @return integer
+     */
+    private $area_conocimiento;
+    
+    public function setAreaConocimiento(\OCWm\OCWBundle\Entity\areas_conocimiento $area_conocimiento){
+        $this->area_conocimiento = $area_conocimiento;
+    }
+    
+    public function getAreaConocimieto(){
+        return $this->area_conocimiento;
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="comentarios", mappedBy="ocws")
+     * 
+     */
+    private $comentarios;
+    
+    public function __contruct(){
+        $this->comentarios = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    public function addComentarios(\OCWm\OCWBundle\Entity\comentarios $comentario){
+        $this->comentarios[] = $comentario;
+    }
+    
+    public function getComentarios(){
+        return $this->comentarios;
+    }
 
     /**
      * Get id

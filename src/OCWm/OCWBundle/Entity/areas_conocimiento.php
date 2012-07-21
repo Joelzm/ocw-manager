@@ -27,8 +27,25 @@ class areas_conocimiento
      * @ORM\Column(name="nombre", type="string", length=255)
      */
     private $nombre;
-
-
+    
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="ocws", mappedBy="areas_conocimiento")
+     */
+    private $ocws;
+    
+    
+    public function __contruct(){
+        $this->ocws = new Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    public function addOcws(\OCWm\OCWBundle\Entity\ocws $ocw){
+        $this->ocw[] = $ocw;
+    }
+    
+    public function getOcws(){
+        return $this->ocws;
+    }
     /**
      * Get id
      *

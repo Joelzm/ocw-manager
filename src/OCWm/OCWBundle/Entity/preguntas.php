@@ -28,7 +28,52 @@ class preguntas
      */
     private $contenido;
 
+    /*
+     * @ORM\ManyToOne(targetEntity="evaluaciones", inversedBy="preguntas")
+     * @ORM\JoinColumn(name="evaluacion_id" referencedColumnName="id")
+     * @return integer;
+     */
+    private $evaluacion;
+    
+    public function setEvaluacion (\OCWm\OCWBundle\Entity\evaluaciones $evaluacion){
+        $this->evaluacion = $evaluacion;
+    }
+    
+    public function getEvaluacion(){
+        return $this->evaluacion;
+    }
+    
+    /*
+     * @RM\ManyToOne(targetEntity="tipos_pregunta", inversedBy="preguntas")
+     * @ORM\JoinColumn(name="tipo_pregunta_id", referencedColumnName="id")
+     * @return integer
+     */
+    private $tipo_pregunta;
+    
+    public function setTiposPregunta(\OCWm\OCWBundle\Entity\tipos_pregunta $tipo_pregunta){
+        $this->tipo_pregunta = $tipo_pregunta;
+    }
+    
+    public function getTiposPregunta(){
+        return $this->tipo_pregunta;
+    }
+    
+    /*
+     * @ORM\OneToMany(targetEntity="respuestas", mappedBy="preguntas")
+     */
+    private $repuestas;
 
+    public function __contruct(){
+        $this->respuestas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    public function addRespuestas(\OCWm\OCWBundle\Entity\respuestas $respuesta){
+        $this->repuestas[] = $respuesta;
+    }
+    
+    public function getRespuestas(){
+        return $this->respuestas;
+    }
     /**
      * Get id
      *

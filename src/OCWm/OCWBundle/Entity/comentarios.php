@@ -41,8 +41,21 @@ class comentarios
      * @ORM\Column(name="contenido", type="text")
      */
     private $contenido;
-
-
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="ocws", inversedBy="comentarios")
+     * @ORM\JoinColumn(name="ocw_id", referencedColunmName="id")
+     * @return integer
+     */
+    private $ocw;
+    
+    public function setOcw(\OCWm\OCWBundle\Entity\ocws $ocw){
+        $this->ocw = $ocw;
+    }
+    
+    public function getOcw(){
+        return $this->ocw;
+    }
     /**
      * Get id
      *

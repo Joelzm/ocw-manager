@@ -28,7 +28,22 @@ class tipos_pregunta
      */
     private $nombre;
 
-
+    /*
+     * @ORM\OneToMany(targetEntity="preguntas", mappedBy="tipos_pregunta")
+     */
+    private $preguntas;
+    
+    public function __contruct(){
+        $this->preguntas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    public function addPreguntas(\OCWm\OCWBundle\Entity\preguntas $pregunta){
+        $this->preguntas[] = $pregunta;
+    }
+    
+    public function getPreguntas(){
+        return $this->preguntas;
+    }
     /**
      * Get id
      *

@@ -35,6 +35,20 @@ class respuestas
      */
     private $correcta;
 
+    /*
+     * @ORM\ManyToOne(targetEntity="preguntas", inversedBy="respuestas")
+     * @ORM\JoinColumn(name="pregunta_id", referencedColumnName="id")
+     * @return integer
+     */
+    private $pregunta;
+    
+    public function setPregunta(\OCWm\OCWBundle\Entity\preguntas $pregunta){
+        $this->pregunta = $pregunta;
+    }
+    
+    public function getPregunta(){
+        return $this->pregunta;
+    }
 
     /**
      * Get id

@@ -20,7 +20,11 @@ class favoritos
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    
+    /*
+     * 
+     */
+    private $usuario;
 
     /**
      * Get id
