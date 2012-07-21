@@ -74,9 +74,24 @@ class usuarios
     
     public function __contruct(){
         $this->favoritos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sugerencias = new \Doctrine\Common\Collections\ArrayCollection();
     }
+    
     /**
-     * @ORM\OneToMany(targetEntity="favoritos", mappedBy="ocws")
+     * @ORM\OneToMany(targetEntity="sugerencias", mappedBy="usuarios")
+     */
+    private $sugerencias;
+    
+    public function addSugerencias(\OCWm\OCWBundle\Entity\favoritos $sugerencia){
+        $this->sugerencias[] = $sugerencia;
+    }
+    
+    public function getSugerencias(){
+        return $this->sugerencias;
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="favoritos", mappedBy="usuarios")
      */
     private $favoritos;
     

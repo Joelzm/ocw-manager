@@ -137,6 +137,20 @@ class ocws
     public function __contruct(){
         $this->comentarios = new \Doctrine\Common\Collections\ArrayCollection();
         $this->favoritos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sugerencias = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="sugerencias", mappedBy="ocws")
+     */
+    private $sugerencias;
+    
+    public function addSugerencias(\OCWm\OCWBundle\Entity\favoritos $sugerencia){
+        $this->sugerencias[] = $sugerencia;
+    }
+    
+    public function getSugerencias(){
+        return $this->sugerencias;
     }
     
     /**
