@@ -27,8 +27,22 @@ class posts_hilo_discusion
      * @ORM\Column(name="contenido", type="text")
      */
     private $contenido;
-
-
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="hilos_discusion", inversedBy="posts_hilo_discusion")
+     * @ORM\JoinColumn(name="hilo_discusion_id", referencedColunmName="id")
+     * @return integer
+     */
+    private $hilo_discusion;
+    
+    public function setHiloDiscusion(\OCWm\OCWBundle\Entity\ocws $hilo_discusion){
+        $this->hilo_discusion = $hilo_discusion;
+    }
+    
+    public function getHiloDiscusion(){
+        return $this->hilo_discusion;
+    }
+    
     /**
      * Get id
      *

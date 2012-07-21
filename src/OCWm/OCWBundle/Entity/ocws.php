@@ -138,6 +138,7 @@ class ocws
         $this->comentarios = new \Doctrine\Common\Collections\ArrayCollection();
         $this->favoritos = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sugerencias = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->hilos_discusion = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -151,6 +152,19 @@ class ocws
     
     public function getSugerencias(){
         return $this->sugerencias;
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="posts_hilos_discusion", mappedBy="hilos_discusion")
+     */
+    private $hilos_discusion;
+    
+    public function addHilosDiscusion(\OCWm\OCWBundle\Entity\favoritos $hilo_discusion){
+        $this->hilos_discusion[] = $hilo_discusion;
+    }
+    
+    public function getHilosDiscusion(){
+        return $this->hilos_discusion;
     }
     
     /**

@@ -27,7 +27,39 @@ class hilos_discusion
      * @ORM\Column(name="nombre", type="string", length=255)
      */
     private $nombre;
-
+    
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="ocws", inversedBy="hilos_discusion")
+     * @ORM\JoinColumn(name="ocw_id", referencedColunmName="id")
+     * @return integer
+     */
+    private $ocw;
+    
+    public function setOcw(\OCWm\OCWBundle\Entity\ocws $ocw){
+        $this->ocw = $ocw;
+    }
+    
+    public function getOcw(){
+        return $this->ocw;
+    }
+    
+    public function __contruct(){
+        $this->posts_hilos_discusion = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="posts_hilos_discusion", mappedBy="hilos_discusion")
+     */
+    private $posts_hilos_discusion;
+    
+    public function addPostsHilosDiscusion(\OCWm\OCWBundle\Entity\favoritos $post_hilos_discusion){
+        $this->posts_hilos_discusion[] = $post_hilos_discusion;
+    }
+    
+    public function getPostsHilosDiscusion(){
+        return $this->posts_hilos_discusion;
+    }
 
     /**
      * Get id
