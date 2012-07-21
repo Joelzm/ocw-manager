@@ -134,15 +134,28 @@ class ocws
         return $this->area_conocimiento;
     }
     
-    /**
-     * @ORM\OneToMany(targetEntity="comentarios", mappedBy="ocws")
-     * 
-     */
-    private $comentarios;
-    
     public function __contruct(){
         $this->comentarios = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->favoritos = new \Doctrine\Common\Collections\ArrayCollection();
     }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="favoritos", mappedBy="ocws")
+     */
+    private $favoritos;
+    
+    public function addFavoritos(\OCWm\OCWBundle\Entity\favoritos $favorito){
+        $this->favoritos[] = $favorito;
+    }
+    
+    public function getFavoritos(){
+        return $this->favoritos;
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="comentarios", mappedBy="ocws")
+     */
+    private $comentarios;
     
     public function addComentarios(\OCWm\OCWBundle\Entity\comentarios $comentario){
         $this->comentarios[] = $comentario;

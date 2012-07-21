@@ -57,12 +57,36 @@ class usuarios
     private $email;
 
     /**
-     * @var integer $rol_id
-     *
-     * @ORM\Column(name="rol_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="roles_usuario", inversedBy="usuarios")
+     * @ORM\JoinColumn(name="rol_usuario_id", referencedColumnName="id")
+     * @return integer
      */
-    private $rol_id;
-
+    private $rol;
+    
+    public function setRol(\OCWm\OCWBundle\Entity\roles_usuario $rol){
+        $this->rol = $rol;
+    }
+    
+    public function getRol(){
+        return $this->rol;
+    }
+    
+    
+    public function __contruct(){
+        $this->favoritos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    /**
+     * @ORM\OneToMany(targetEntity="favoritos", mappedBy="ocws")
+     */
+    private $favoritos;
+    
+    public function addFavoritos(\OCWm\OCWBundle\Entity\favoritos $favorito){
+        $this->favoritos[] = $favorito;
+    }
+    
+    public function getFavoritos(){
+        return $this->favoritos;
+    }
 
     /**
      * Get id

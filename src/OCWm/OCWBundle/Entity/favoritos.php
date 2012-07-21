@@ -22,9 +22,34 @@ class favoritos
     private $id;
     
     /*
-     * 
+     * @ORM\ManyToOne(targetEntity="usuarios", inversedBy="favoritos")
+     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
+     * @return integer
      */
     private $usuario;
+    
+    public function setUsuario(\OCWm\OCWBundle\Entity\usuarios $usuario){
+        $this->usuario = $usuario;
+    }
+    
+    public function getUsuario(){
+        return $this->usuario;
+    }
+    
+    /*
+     * @ORM\ManyToOne(targetEntity="ocws", inversedBy="favoritos")
+     * @ORM\JoinColumn(name="ocw_id", referencedColumnName="id")
+     * @return integer
+     */
+    private $ocw;
+    
+    public function setOcw(\OCWm\OCWBundle\Entity\ocws $ocw){
+        $this->ocw = $ocw;
+    }
+    
+    public function getOcw(){
+        return $this->ocw;
+    }
 
     /**
      * Get id

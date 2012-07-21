@@ -36,6 +36,15 @@ class sugerencias
     private $creado;
 
 
+    /*
+     * @ORM\ManyToOne(targetEntity="usuarios", inversedBy="sugerencias")
+     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
+     * @return integer
+     */
+    private $usuario;
+    
+    public function 
+    
     /**
      * Get id
      *
