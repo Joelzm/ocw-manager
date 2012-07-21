@@ -1,0 +1,7 @@
+parameters:
+#    oc_wm_ocw.example.class: OCWm\OCWBundle\Example
+
+services:
+#    oc_wm_ocw.example:
+#        class: %oc_wm_ocw.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

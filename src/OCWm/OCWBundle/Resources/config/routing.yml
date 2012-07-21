@@ -1,0 +1,3 @@
+OCWmOCWBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: OCWmOCWBundle:OCW:index }
