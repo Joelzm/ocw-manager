@@ -60,7 +60,6 @@ jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
 
-# Añadimos las configuraciones específicas para el StofDoctrineExtensiosBundle
 stof_doctrine_extensions:
   default_locale: en_US
   orm:
@@ -68,4 +67,3 @@ stof_doctrine_extensions:
   sluggable: true
   timestampable: true
   loggable: true
-#demás behaviors para activar
