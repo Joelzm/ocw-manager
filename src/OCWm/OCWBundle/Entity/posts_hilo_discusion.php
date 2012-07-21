@@ -20,7 +20,7 @@ class posts_hilo_discusion
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    private $id; 
 
     /**
      * @var text $contenido
