@@ -90,7 +90,7 @@ class comentarios
     
     /**
      * @ORM\ManyToOne(targetEntity="ocws", inversedBy="comentarios")
-     * @ORM\JoinColumn(name="ocw_id", referencedColunmName="id")
+     * @ORM\JoinColumn(name="ocw_id", referencedColumnName="id")
      * @return integer
      */
     private $ocw;

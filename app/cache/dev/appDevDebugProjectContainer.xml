@@ -18,6 +18,7 @@
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="JMSSecurityExtraBundle">JMS\SecurityExtraBundle\JMSSecurityExtraBundle</parameter>
       <parameter key="OCWmOCWBundle">OCWm\OCWBundle\OCWmOCWBundle</parameter>
+      <parameter key="StofDoctrineExtensionsBundle">Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -338,6 +339,7 @@
       <parameter>SensioFrameworkExtraBundle</parameter>
       <parameter>JMSSecurityExtraBundle</parameter>
       <parameter>OCWmOCWBundle</parameter>
+      <parameter>StofDoctrineExtensionsBundle</parameter>
       <parameter>AcmeDemoBundle</parameter>
       <parameter>WebProfilerBundle</parameter>
       <parameter>SensioDistributionBundle</parameter>
@@ -383,6 +385,18 @@
     <parameter key="security.extra.controller_listener.class">JMS\SecurityExtraBundle\Controller\ControllerListener</parameter>
     <parameter key="security.access.iddqd_voter.class">JMS\SecurityExtraBundle\Security\Authorization\Voter\IddqdVoter</parameter>
     <parameter key="security.extra.secure_all_services">false</parameter>
+    <parameter key="stof_doctrine_extensions.event_listener.locale.class">Stof\DoctrineExtensionsBundle\EventListener\LocaleListener</parameter>
+    <parameter key="stof_doctrine_extensions.event_listener.logger.class">Stof\DoctrineExtensionsBundle\EventListener\LoggerListener</parameter>
+    <parameter key="stof_doctrine_extensions.default_locale">en_US</parameter>
+    <parameter key="stof_doctrine_extensions.translation_fallback">false</parameter>
+    <parameter key="stof_doctrine_extensions.persist_default_translation">false</parameter>
+    <parameter key="stof_doctrine_extensions.listener.translatable.class">Gedmo\Translatable\TranslatableListener</parameter>
+    <parameter key="stof_doctrine_extensions.listener.timestampable.class">Gedmo\Timestampable\TimestampableListener</parameter>
+    <parameter key="stof_doctrine_extensions.listener.sluggable.class">Gedmo\Sluggable\SluggableListener</parameter>
+    <parameter key="stof_doctrine_extensions.listener.tree.class">Gedmo\Tree\TreeListener</parameter>
+    <parameter key="stof_doctrine_extensions.listener.loggable.class">Gedmo\Loggable\LoggableListener</parameter>
+    <parameter key="stof_doctrine_extensions.listener.sortable.class">Gedmo\Sortable\SortableListener</parameter>
+    <parameter key="stof_doctrine_extensions.listener.softdeleteable.class">Gedmo\SoftDeleteable\SoftDeleteableListener</parameter>
     <parameter key="web_profiler.debug_toolbar.class">Symfony\Bundle\WebProfilerBundle\EventListener\WebDebugToolbarListener</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
     <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
@@ -1593,6 +1607,29 @@
               </service>
             </argument>
           </call>
+          <call method="addEventSubscriber">
+            <argument type="service">
+              <service class="Gedmo\Timestampable\TimestampableListener" public="false">
+                <tag name="doctrine.event_subscriber" connection="default"/>
+                <call method="setAnnotationReader">
+                  <argument type="service" id="annotation_reader"/>
+                </call>
+              </service>
+            </argument>
+          </call>
+          <call method="addEventSubscriber">
+            <argument type="service">
+              <service class="Gedmo\Sluggable\SluggableListener" public="false">
+                <tag name="doctrine.event_subscriber" connection="default"/>
+                <call method="setAnnotationReader">
+                  <argument type="service" id="annotation_reader"/>
+                </call>
+              </service>
+            </argument>
+          </call>
+          <call method="addEventSubscriber">
+            <argument type="service" id="stof_doctrine_extensions.listener.loggable"/>
+          </call>
         </service>
       </argument>
       <argument type="collection"/>
@@ -1992,6 +2029,33 @@
               <argument type="service">
                 <service class="%assetic.directory_resource.class%" public="false">
                   <argument type="service" id="templating.loader"/>
+                  <argument>StofDoctrineExtensionsBundle</argument>
+                  <argument>C:/wamp/www/ocw-manager/app/Resources/StofDoctrineExtensionsBundle/views</argument>
+                  <argument>/\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>StofDoctrineExtensionsBundle</argument>
+                  <argument>C:\wamp\www\ocw-manager\vendor\bundles\Stof\DoctrineExtensionsBundle/Resources/views</argument>
+                  <argument>/\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+            </argument>
+          </service>
+        </argument>
+        <argument>twig</argument>
+      </call>
+      <call method="addResource">
+        <argument type="service">
+          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
+            <tag name="assetic.templating.twig"/>
+            <tag name="assetic.formula_resource" loader="twig"/>
+            <argument type="collection">
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
                   <argument>AcmeDemoBundle</argument>
                   <argument>C:/wamp/www/ocw-manager/app/Resources/AcmeDemoBundle/views</argument>
                   <argument>/\.[^.]+\.twig$/</argument>
@@ -2188,6 +2252,17 @@
       <tag name="kernel.event_listener" event="kernel.controller" method="onCoreController" priority="-255"/>
       <argument type="service" id="service_container"/>
       <argument type="service" id="annotation_reader"/>
+    </service>
+    <service id="stof_doctrine_extensions.listener.loggable" class="Gedmo\Loggable\LoggableListener" public="false">
+      <tag name="doctrine.event_subscriber" connection="default"/>
+      <call method="setAnnotationReader">
+        <argument type="service" id="annotation_reader"/>
+      </call>
+    </service>
+    <service id="stof_doctrine_extensions.event_listener.logger" class="Stof\DoctrineExtensionsBundle\EventListener\LoggerListener">
+      <tag name="kernel.event_subscriber"/>
+      <argument type="service" id="stof_doctrine_extensions.listener.loggable"/>
+      <argument type="service" id="security.context"/>
     </service>
     <service id="twig.extension.acme.demo" class="Acme\DemoBundle\Twig\Extension\DemoExtension" public="false">
       <tag name="twig.extension"/>

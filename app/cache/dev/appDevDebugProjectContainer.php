@@ -82,6 +82,7 @@ class appDevDebugProjectContainer extends Container
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioFrameworkExtraBundle', 'C:/wamp/www/ocw-manager/app/Resources/SensioFrameworkExtraBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioFrameworkExtraBundle', 'C:\\wamp\\www\\ocw-manager\\vendor\\bundles\\Sensio\\Bundle\\FrameworkExtraBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JMSSecurityExtraBundle', 'C:/wamp/www/ocw-manager/app/Resources/JMSSecurityExtraBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JMSSecurityExtraBundle', 'C:\\wamp\\www\\ocw-manager\\vendor\\bundles\\JMS\\SecurityExtraBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'OCWmOCWBundle', 'C:/wamp/www/ocw-manager/app/Resources/OCWmOCWBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'OCWmOCWBundle', 'C:\\wamp\\www\\ocw-manager\\src\\OCWm\\OCWBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'StofDoctrineExtensionsBundle', 'C:/wamp/www/ocw-manager/app/Resources/StofDoctrineExtensionsBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'StofDoctrineExtensionsBundle', 'C:\\wamp\\www\\ocw-manager\\vendor\\bundles\\Stof\\DoctrineExtensionsBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AcmeDemoBundle', 'C:/wamp/www/ocw-manager/app/Resources/AcmeDemoBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AcmeDemoBundle', 'C:\\wamp\\www\\ocw-manager\\src\\Acme\\DemoBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'WebProfilerBundle', 'C:/wamp/www/ocw-manager/app/Resources/WebProfilerBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'WebProfilerBundle', 'C:\\wamp\\www\\ocw-manager\\vendor\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioDistributionBundle', 'C:/wamp/www/ocw-manager/app/Resources/SensioDistributionBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioDistributionBundle', 'C:\\wamp\\www\\ocw-manager\\vendor\\bundles\\Sensio\\Bundle\\DistributionBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
@@ -207,13 +208,24 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getDoctrine_Dbal_DefaultConnectionService()
     {
-        $a = new \Doctrine\DBAL\Configuration();
-        $a->setSQLLogger($this->get('doctrine.dbal.logger'));
+        $a = $this->get('annotation_reader');
 
-        $b = new \Doctrine\Common\EventManager();
-        $b->addEventSubscriber(new \Doctrine\DBAL\Event\Listeners\MysqlSessionInit('UTF8'));
+        $b = new \Doctrine\DBAL\Configuration();
+        $b->setSQLLogger($this->get('doctrine.dbal.logger'));
 
-        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('dbname' => 'ocwm', 'host' => 'localhost', 'port' => '', 'user' => 'root', 'password' => '', 'driver' => 'pdo_mysql', 'driverOptions' => array()), $a, $b, array());
+        $c = new \Gedmo\Timestampable\TimestampableListener();
+        $c->setAnnotationReader($a);
+
+        $d = new \Gedmo\Sluggable\SluggableListener();
+        $d->setAnnotationReader($a);
+
+        $e = new \Doctrine\Common\EventManager();
+        $e->addEventSubscriber(new \Doctrine\DBAL\Event\Listeners\MysqlSessionInit('UTF8'));
+        $e->addEventSubscriber($c);
+        $e->addEventSubscriber($d);
+        $e->addEventSubscriber($this->get('stof_doctrine_extensions.listener.loggable'));
+
+        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('dbname' => 'ocwm', 'host' => 'localhost', 'port' => '', 'user' => 'root', 'password' => '', 'driver' => 'pdo_mysql', 'driverOptions' => array()), $b, $e, array());
     }
 
     /**
@@ -1432,6 +1444,19 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'stof_doctrine_extensions.event_listener.logger' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Stof\DoctrineExtensionsBundle\EventListener\LoggerListener A Stof\DoctrineExtensionsBundle\EventListener\LoggerListener instance.
+     */
+    protected function getStofDoctrineExtensions_EventListener_LoggerService()
+    {
+        return $this->services['stof_doctrine_extensions.event_listener.logger'] = new \Stof\DoctrineExtensionsBundle\EventListener\LoggerListener($this->get('stof_doctrine_extensions.listener.loggable'), $this->get('security.context'));
+    }
+
+    /**
      * Gets the 'swiftmailer.plugin.messagelogger' service.
      *
      * This service is shared.
@@ -1993,6 +2018,27 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'stof_doctrine_extensions.listener.loggable' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * This service is private.
+     * If you want to be able to request this service from the container directly,
+     * make it public, otherwise you might end up with broken code.
+     *
+     * @return Gedmo\Loggable\LoggableListener A Gedmo\Loggable\LoggableListener instance.
+     */
+    protected function getStofDoctrineExtensions_Listener_LoggableService()
+    {
+        $this->services['stof_doctrine_extensions.listener.loggable'] = $instance = new \Gedmo\Loggable\LoggableListener();
+
+        $instance->setAnnotationReader($this->get('annotation_reader'));
+
+        return $instance;
+    }
+
+    /**
      * Gets the 'templating.locator' service.
      *
      * This service is shared.
@@ -2126,6 +2172,7 @@ class appDevDebugProjectContainer extends Container
                 'SensioFrameworkExtraBundle' => 'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle',
                 'JMSSecurityExtraBundle' => 'JMS\\SecurityExtraBundle\\JMSSecurityExtraBundle',
                 'OCWmOCWBundle' => 'OCWm\\OCWBundle\\OCWmOCWBundle',
+                'StofDoctrineExtensionsBundle' => 'Stof\\DoctrineExtensionsBundle\\StofDoctrineExtensionsBundle',
                 'AcmeDemoBundle' => 'Acme\\DemoBundle\\AcmeDemoBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',
@@ -2454,10 +2501,11 @@ class appDevDebugProjectContainer extends Container
                 7 => 'SensioFrameworkExtraBundle',
                 8 => 'JMSSecurityExtraBundle',
                 9 => 'OCWmOCWBundle',
-                10 => 'AcmeDemoBundle',
-                11 => 'WebProfilerBundle',
-                12 => 'SensioDistributionBundle',
-                13 => 'SensioGeneratorBundle',
+                10 => 'StofDoctrineExtensionsBundle',
+                11 => 'AcmeDemoBundle',
+                12 => 'WebProfilerBundle',
+                13 => 'SensioDistributionBundle',
+                14 => 'SensioGeneratorBundle',
             ),
             'assetic.twig_extension.class' => 'Symfony\\Bundle\\AsseticBundle\\Twig\\AsseticExtension',
             'assetic.twig_formula_loader.class' => 'Assetic\\Extension\\Twig\\TwigFormulaLoader',
@@ -2503,6 +2551,18 @@ class appDevDebugProjectContainer extends Container
             'security.extra.controller_listener.class' => 'JMS\\SecurityExtraBundle\\Controller\\ControllerListener',
             'security.access.iddqd_voter.class' => 'JMS\\SecurityExtraBundle\\Security\\Authorization\\Voter\\IddqdVoter',
             'security.extra.secure_all_services' => false,
+            'stof_doctrine_extensions.event_listener.locale.class' => 'Stof\\DoctrineExtensionsBundle\\EventListener\\LocaleListener',
+            'stof_doctrine_extensions.event_listener.logger.class' => 'Stof\\DoctrineExtensionsBundle\\EventListener\\LoggerListener',
+            'stof_doctrine_extensions.default_locale' => 'en_US',
+            'stof_doctrine_extensions.translation_fallback' => false,
+            'stof_doctrine_extensions.persist_default_translation' => false,
+            'stof_doctrine_extensions.listener.translatable.class' => 'Gedmo\\Translatable\\TranslatableListener',
+            'stof_doctrine_extensions.listener.timestampable.class' => 'Gedmo\\Timestampable\\TimestampableListener',
+            'stof_doctrine_extensions.listener.sluggable.class' => 'Gedmo\\Sluggable\\SluggableListener',
+            'stof_doctrine_extensions.listener.tree.class' => 'Gedmo\\Tree\\TreeListener',
+            'stof_doctrine_extensions.listener.loggable.class' => 'Gedmo\\Loggable\\LoggableListener',
+            'stof_doctrine_extensions.listener.sortable.class' => 'Gedmo\\Sortable\\SortableListener',
+            'stof_doctrine_extensions.listener.softdeleteable.class' => 'Gedmo\\SoftDeleteable\\SoftDeleteableListener',
             'web_profiler.debug_toolbar.class' => 'Symfony\\Bundle\\WebProfilerBundle\\EventListener\\WebDebugToolbarListener',
             'web_profiler.debug_toolbar.intercept_redirects' => false,
             'web_profiler.debug_toolbar.mode' => 2,

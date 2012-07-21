@@ -77,7 +77,7 @@ class hilos_discusion
     
     /**
      * @ORM\ManyToOne(targetEntity="ocws", inversedBy="hilos_discusion")
-     * @ORM\JoinColumn(name="ocw_id", referencedColunmName="id")
+     * @ORM\JoinColumn(name="ocw_id", referencedColumnName="id")
      * @return integer
      */
     private $ocw;
@@ -95,7 +95,7 @@ class hilos_discusion
     }
     
     /**
-     * @ORM\OneToMany(targetEntity="posts_hilos_discusion", mappedBy="hilos_discusion")
+     * @ORM\OneToMany(targetEntity="posts_hilo_discusion", mappedBy="hilos_discusion")
      */
     private $posts_hilos_discusion;
     

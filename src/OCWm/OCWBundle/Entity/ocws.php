@@ -26,7 +26,7 @@ class ocws
      * @var string $nombre
      *
      * @ORM\Column(name="nombre", type="string", length=255)
-     * @Gedmo\Slugable()
+     *
      */
     private $nombre;
 
@@ -86,7 +86,7 @@ class ocws
      *
      * @var srting $slug
      * @ORM\Column(name="slug", type="string", length=500) 
-     * @Gedmo\Slug(style="camel", separator="_", updatable=false, unique=true)
+     * @Gedmo\Slug(fields={"nombre"}, style="camel", separator="_", updatable=false, unique=true)
      */
     private $slug;
 
@@ -175,7 +175,7 @@ class ocws
     private $proyectos_clase;
 
     /**
-     * @ORM\ManyToOne(tagetEntity="areas_conocimiento", inversedBy="ocws")
+     * @ORM\ManyToOne(targetEntity="areas_conocimiento", inversedBy="ocws")
      * @ORM\JoinColumn(name="area_conocimiento_id", referencedColumnName="id")
      * @return integer
      */
@@ -238,7 +238,7 @@ class ocws
     }
     
     /**
-     * @ORM\OneToMany(targetEntity="posts_hilos_discusion", mappedBy="hilos_discusion")
+     * @ORM\OneToMany(targetEntity="posts_hilo_discusion", mappedBy="hilos_discusion")
      */
     private $hilos_discusion;
     

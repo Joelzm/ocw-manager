@@ -47,7 +47,9 @@ doctrine:
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
-        mappings:StofDoctrineExtensionsBundle: ~
+
+        mappings: 
+           StofDoctrineExtensionsBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -61,9 +63,9 @@ jms_security_extra:
     secure_all_services: false
 
 stof_doctrine_extensions:
-  default_locale: en_US
-  orm:
-  default:
-  sluggable: true
-  timestampable: true
-  loggable: true
+    default_locale: en_US
+    orm:
+        default:
+            sluggable: true
+            timestampable: true
+            loggable: true

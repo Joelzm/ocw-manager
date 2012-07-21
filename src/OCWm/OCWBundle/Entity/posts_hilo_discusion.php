@@ -76,7 +76,7 @@ class posts_hilo_discusion
     
     /**
      * @ORM\ManyToOne(targetEntity="hilos_discusion", inversedBy="posts_hilo_discusion")
-     * @ORM\JoinColumn(name="hilo_discusion_id", referencedColunmName="id")
+     * @ORM\JoinColumn(name="hilo_discusion_id", referencedColumnName="id")
      * @return integer
      */
     private $hilo_discusion;

@@ -37,7 +37,7 @@ class recursos
     
     /**
      * @ORM\ManyToOne(targetEntity="ocws", inversedBy="recursos")
-     * @ORM\JoinColumn(name="ocw_id", referencedColunmName="id")
+     * @ORM\JoinColumn(name="ocw_id", referencedColumnName="id")
      * @return integer
      */
     private $ocw;
@@ -52,7 +52,7 @@ class recursos
     
     /**
      * @ORM\ManyToOne(targetEntity="tipos_recurso", inversedBy="recursos")
-     * @ORM\JoinColumn(name="tipo_recurso_id", referencedColunmName="id")
+     * @ORM\JoinColumn(name="tipo_recurso_id", referencedColumnName="id")
      * @return integer
      */
     private $tipo_recurso;
