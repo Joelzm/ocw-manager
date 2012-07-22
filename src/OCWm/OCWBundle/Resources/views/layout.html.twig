@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>:: OCWManager :: {% block title %}{% endblock title %}</title>
+        <link rel="stylesheet" href="{{ asset('css/layout.css') }}" />
+        {% block estilos %}{% endblock estilos %}
+        <link rel="shortcut icon" href="{{ asset('favicon.png') }}" />
+        <script src="{{ asset('js/jquery-1.7.2.min.js') }}"></script>
+    </head>
+    <body>
+        <header>
+            <div class="centro">
+                <div class="logo"></div>
+                <nav>{% block mainmenu %}{% endblock mainmenu %}</nav>
+            </div>
+        </header>
+        <div class="centro">
+            {% block content %}{% endblock content %}
+            {% block javascripts %} {% endblock javascripts %}
+            <footer>OCWManager. Copyright 2012. Universidad de córdoba. Todos los derechos reservados.</footer>
+        </div>
+    </body>
+</html>

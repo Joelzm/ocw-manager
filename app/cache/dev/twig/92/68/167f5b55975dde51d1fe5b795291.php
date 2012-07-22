@@ -7,19 +7,34 @@ class __TwigTemplate_9268167f5b55975dde51d1fe5b795291 extends Twig_Template
     {
         parent::__construct($env);
 
-        $this->parent = false;
+        $this->parent = $this->env->loadTemplate("OCWmOCWBundle::anonimo.html.twig");
 
         $this->blocks = array(
+            'title' => array($this, 'block_title'),
+            'content' => array($this, 'block_content'),
         );
+    }
+
+    protected function doGetParent(array $context)
+    {
+        return "OCWmOCWBundle::anonimo.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        // line 1
-        echo "Hello ";
-        echo twig_escape_filter($this->env, $this->getContext($context, "name"), "html", null, true);
-        echo "!
-";
+        $this->parent->display($context, array_merge($this->blocks, $blocks));
+    }
+
+    // line 2
+    public function block_title($context, array $blocks = array())
+    {
+        echo " Inicio ";
+    }
+
+    // line 3
+    public function block_content($context, array $blocks = array())
+    {
+        echo "Esto es un texto ";
     }
 
     public function getTemplateName()
@@ -34,6 +49,6 @@ class __TwigTemplate_9268167f5b55975dde51d1fe5b795291 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  17 => 1,);
+        return array (  33 => 3,  27 => 2,);
     }
 }

@@ -141,8 +141,11 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // OCWmOCWBundle_homepage
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]+?)$#s', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\OCWController::indexAction',)), array('_route' => 'OCWmOCWBundle_homepage'));
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'OCWmOCWBundle_homepage');
+            }
+            return array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\OCWController::indexAction',  '_route' => 'OCWmOCWBundle_homepage',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
