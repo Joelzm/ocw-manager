@@ -34,7 +34,9 @@ class __TwigTemplate_9268167f5b55975dde51d1fe5b795291 extends Twig_Template
     // line 3
     public function block_content($context, array $blocks = array())
     {
-        echo "Esto es un texto ";
+        // line 4
+        echo "    <div>Esto es un texto y lo pongo porque me da la gana!</div>
+";
     }
 
     public function getTemplateName()
@@ -49,6 +51,6 @@ class __TwigTemplate_9268167f5b55975dde51d1fe5b795291 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  33 => 3,  27 => 2,);
+        return array (  36 => 4,  33 => 3,  27 => 2,);
     }
 }

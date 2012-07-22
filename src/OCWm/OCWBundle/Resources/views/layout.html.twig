@@ -11,14 +11,17 @@
     <body>
         <header>
             <div class="centro">
-                <div class="logo"></div>
+                <div class="logo">
+                    <img src="{{ asset('images/logo_02.jpg') }}" />
+                </div>
                 <nav>{% block mainmenu %}{% endblock mainmenu %}</nav>
             </div>
+            <div class="limpiar_float"></div>
         </header>
         <div class="centro">
             {% block content %}{% endblock content %}
             {% block javascripts %} {% endblock javascripts %}
-            <footer>OCWManager. Copyright 2012. Universidad de córdoba. Todos los derechos reservados.</footer>
+            <footer><strong>OCWManager</strong>. Copyright 2012. Universidad de córdoba. Todos los derechos reservados.</footer>
         </div>
     </body>
 </html>

@@ -5,6 +5,18 @@ body {
     color: #444;
 }
 
+.limpiar_float{
+    clear: both;
+}
+
+.gris{
+    background-color: #fafafa;
+}
+
+.rojo{
+    background-color: #AA3333;
+}
+
 .centro{
     margin: 0 auto;
     width: 990px;
@@ -13,9 +25,24 @@ body {
 header{
     height: 92px;
     background-color: #f5f5f5;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 7px;
+}
+
+header .logo{
+    float: left;
+}
+
+header nav {
+    float: right;
 }
 
 footer{
-    
+    font-style: italic;
+    text-align: center;
+    padding-top: 5px;
+    border-top: 1px dashed #ddd;
+    margin-top: 7px;
+    font-size: 11px;
+    color: #888;
 }

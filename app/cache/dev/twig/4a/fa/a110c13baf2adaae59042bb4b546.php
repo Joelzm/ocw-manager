@@ -46,24 +46,30 @@ class __TwigTemplate_4afaa110c13baf2adaae59042bb4b546 extends Twig_Template
         echo "\"></script>
     </head>
     <body>
-        <header id=\"header\">
+        <header>
             <div class=\"centro\">
-                <div class=\"logo\"></div>
-                <nav>";
+                <div class=\"logo\">
+                    <img src=\"";
         // line 15
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/logo_02.jpg"), "html", null, true);
+        echo "\" />
+                </div>
+                <nav>";
+        // line 17
         $this->displayBlock('mainmenu', $context, $blocks);
         echo "</nav>
             </div>
+            <div class=\"limpiar_float\"></div>
         </header>
         <div class=\"centro\">
             ";
-        // line 19
+        // line 22
         $this->displayBlock('content', $context, $blocks);
-        // line 20
+        // line 23
         echo "            ";
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 21
-        echo "            <footer>OCWManager. Copyright 2012. Universidad de córdoba. Todos los derechos reservados.</footer>
+        // line 24
+        echo "            <footer><strong>OCWManager</strong>. Copyright 2012. Universidad de córdoba. Todos los derechos reservados.</footer>
         </div>
     </body>
 </html>
@@ -80,17 +86,17 @@ class __TwigTemplate_4afaa110c13baf2adaae59042bb4b546 extends Twig_Template
     {
     }
 
-    // line 15
+    // line 17
     public function block_mainmenu($context, array $blocks = array())
     {
     }
 
-    // line 19
+    // line 22
     public function block_content($context, array $blocks = array())
     {
     }
 
-    // line 20
+    // line 23
     public function block_javascripts($context, array $blocks = array())
     {
         echo " ";
@@ -108,6 +114,6 @@ class __TwigTemplate_4afaa110c13baf2adaae59042bb4b546 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  92 => 20,  87 => 19,  82 => 15,  77 => 7,  72 => 5,  64 => 21,  61 => 20,  59 => 19,  52 => 15,  43 => 9,  38 => 8,  36 => 7,  32 => 6,  28 => 5,  22 => 1,);
+        return array (  98 => 23,  93 => 22,  88 => 17,  83 => 7,  78 => 5,  70 => 24,  67 => 23,  65 => 22,  57 => 17,  52 => 15,  43 => 9,  38 => 8,  32 => 6,  28 => 5,  22 => 1,  36 => 7,  33 => 3,  27 => 2,);
     }
 }
