@@ -35,13 +35,7 @@ class posts_hilo_discusion
      * @Gedmo\Timestampable(on="create")
      */
     private $creado;
-    
-    /**
-     *
-     * @var date $actualizado
-     * @ORM\Column(name="actualizado", type="date")
-     * @Gedmo\Timestampable(on="update")
-     */
+
     
     public function setCreado($creado){
         $this->creado = $creado;
@@ -54,26 +48,7 @@ class posts_hilo_discusion
     public function getCreado(){
         return $this->creado;
     }
-    
-    private $actualizado;
-    
-    /**
-     * Set actualizado
-     * @param date $creado 
-     */
-    
-    public function setActualizado($actualizado){
-        $this->actualizado = $actualizado;
-    }
-    
-    /**
-     * Get actualizado
-     * @return date 
-     */
-    public function getActualizado(){
-        return $this->actualizado;
-    }
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="hilos_discusion", inversedBy="posts_hilo_discusion")
      * @ORM\JoinColumn(name="hilo_discusion_id", referencedColumnName="id")

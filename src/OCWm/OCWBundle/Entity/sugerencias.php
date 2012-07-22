@@ -3,6 +3,7 @@
 namespace OCWm\OCWBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * OCWm\OCWBundle\Entity\sugerencias
@@ -10,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="OCWm\OCWBundle\Entity\sugerenciasRepository")
  */
+
 class sugerencias
 {
     /**
@@ -32,6 +34,7 @@ class sugerencias
      * @var date $creado
      *
      * @ORM\Column(name="creado", type="date")
+     * @Gedmo\Timestampable(on="create")
      */
     private $creado;
 

@@ -44,12 +44,7 @@ class ocws
      */
     private $creado;
     
-    /**
-     *
-     * @var date $actualizado
-     * @ORM\Column(name="actualizado", type="date")
-     * @Gedmo\Timestampable(on="update")
-     */
+    
     
     public function setCreado($creado){
         $this->creado = $creado;
@@ -63,13 +58,18 @@ class ocws
         return $this->creado;
     }
     
+    /**
+     *
+     * @var date $actualizado
+     * @ORM\Column(name="actualizado", type="date")
+     * @Gedmo\Timestampable(on="update")
+     */
     private $actualizado;
     
     /**
      * Set actualizado
      * @param date $creado 
-     */
-    
+     */    
     public function setActualizado($actualizado){
         $this->actualizado = $actualizado;
     }
