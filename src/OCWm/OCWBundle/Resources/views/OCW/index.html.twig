@@ -1,5 +1,37 @@
 {% extends "OCWmOCWBundle::anonimo.html.twig" %}
+{% block estilos %}
+    <link rel="stylesheet" href="{{ asset('css/default.css') }}" type="text/css'" media="screen" />
+    <link rel="stylesheet" href="{{ asset('css/nivo-slider.css') }}" type="text/css" media="screen" />
+    <!--<link rel="stylesheet" href="{{ asset('js/nivo/demo/style.css') }}" type="text/css" media="screen" />-->
+{% endblock %}
 {% block title %} Inicio {% endblock %}
 {% block content %}
+    <div class="slider-wrapper theme-default">
+        <div id="slider" class="nivoSlider">
+            <img src="{{ asset('images/img_ocws/arquitectura_16.jpg') }}" data-thumb="{{ asset('images/img_ocws/arquitectura_16.jpg') }}" alt="" title="#arquitectura_caption"/>
+            <img src="{{ asset('images/img_ocws/fotografia_16.jpg') }}" data-thumb="{{ asset('images/img_ocws/fotografia_16.jpg') }}" alt="" title="#fotografia_caption" />
+            <img src="{{ asset('images/img_ocws/suelos_16.jpg') }}" data-thumb="{{ asset('images/img_ocws/suelos_16.jpg') }}" alt="" data-transition="#suelos_caption" />
+        </div>
+        <div id="arquitectura_caption" class="nivo-html-caption">
+            <strong>This</strong> | ver ocw <br/>
+            Is an example of a <em>HTML</em> caption with <a href="#">a link</a>. 
+        </div>
+        <div id="fotografia_caption" class="nivo-html-caption">
+            <strong>This</strong> | ver ocw <br/>
+            Is an example of a <em>HTML</em> caption with <a href="#">a link</a>.
+        </div>
+        <div id="suelos_caption" class="nivo-html-caption">
+            <strong>This</strong> | ver ocw <br/>
+            Is an example of a <em>HTML</em> caption with <a href="#">a link</a>.
+        </div>
+    </div>
     <div>Esto es un texto y lo pongo porque me da la gana!</div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/nivo/jquery.nivo.slider.js') }}"></script>
+    <script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+    </script>
 {% endblock %}

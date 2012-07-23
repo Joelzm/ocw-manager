@@ -35,7 +35,56 @@ header .logo{
 
 header nav {
     float: right;
+    display: block;
+    height: 22px;
+    margin-top: 65px;
 }
+
+header nav ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li{
+    float:left;
+    margin-left: 5px;
+}
+
+header nav ul li a{
+    display: block;
+    padding: 6px 5px;
+    color: #444;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+header nav ul li a:hover{
+    background-color: #eee;
+}
+
+header nav ul li a:after{
+    content: '.';
+    visibility: hidden;
+    clear: both;
+}
+
+header nav ul li a:active{
+    color: #b6493a;
+}
+    
+header nav ul li a img{
+    display: block;
+    float: left;
+    margin-right: 3px;
+}
+
+header nav ul li a span{
+    display: block;
+    margin-top: 3px;
+    float: left;
+} 
 
 footer{
     font-style: italic;

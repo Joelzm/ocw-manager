@@ -31,15 +31,15 @@ class __TwigTemplate_bc90206fc207d4d088daf5e9235e363c extends Twig_Template
         echo "    <ul>
         <li><a href=\"#\"><img src=\"";
         // line 4
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/icons_mainmenu_05.gif"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/icons_mainmenu_05.png"), "html", null, true);
         echo "\" /><span>Inicio</span></a></li>
         <li><a href=\"#\"><img src=\"";
         // line 5
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/icons_mainmenu_07.gif"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/icons_mainmenu_07.png"), "html", null, true);
         echo "\" /><span>Buscar</span></a></li>
         <li><a href=\"#\"><img src=\"";
         // line 6
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/icons_mainmenu_09.gif"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/icons_mainmenu_09.png"), "html", null, true);
         echo "\" /><span>Login</span></a></li>
     </ul>
 ";
