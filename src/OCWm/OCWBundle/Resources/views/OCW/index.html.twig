@@ -1,37 +1,63 @@
 {% extends "OCWmOCWBundle::anonimo.html.twig" %}
-{% block estilos %}
-    <link rel="stylesheet" href="{{ asset('css/default.css') }}" type="text/css'" media="screen" />
-    <link rel="stylesheet" href="{{ asset('css/nivo-slider.css') }}" type="text/css" media="screen" />
-    <!--<link rel="stylesheet" href="{{ asset('js/nivo/demo/style.css') }}" type="text/css" media="screen" />-->
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/orbit-1.2.3.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
 {% endblock %}
 {% block title %} Inicio {% endblock %}
 {% block content %}
-    <div class="slider-wrapper theme-default">
-        <div id="slider" class="nivoSlider">
-            <img src="{{ asset('images/img_ocws/arquitectura_16.jpg') }}" data-thumb="{{ asset('images/img_ocws/arquitectura_16.jpg') }}" alt="" title="#arquitectura_caption"/>
-            <img src="{{ asset('images/img_ocws/fotografia_16.jpg') }}" data-thumb="{{ asset('images/img_ocws/fotografia_16.jpg') }}" alt="" title="#fotografia_caption" />
-            <img src="{{ asset('images/img_ocws/suelos_16.jpg') }}" data-thumb="{{ asset('images/img_ocws/suelos_16.jpg') }}" alt="" data-transition="#suelos_caption" />
-        </div>
-        <div id="arquitectura_caption" class="nivo-html-caption">
-            <strong>This</strong> | ver ocw <br/>
-            Is an example of a <em>HTML</em> caption with <a href="#">a link</a>. 
-        </div>
-        <div id="fotografia_caption" class="nivo-html-caption">
-            <strong>This</strong> | ver ocw <br/>
-            Is an example of a <em>HTML</em> caption with <a href="#">a link</a>.
-        </div>
-        <div id="suelos_caption" class="nivo-html-caption">
-            <strong>This</strong> | ver ocw <br/>
-            Is an example of a <em>HTML</em> caption with <a href="#">a link</a>.
-        </div>
+    
+    <div id="slider">
+        <img src="{{ asset('images/img_ocws/arquitectura_16.jpg') }}" width="990" height="351"  data-caption="#c1"/>
+        <img src="{{ asset('images/img_ocws/fotografia_16.jpg') }}" width="990" height="351" data-caption="#c2"/>
+        <img src="{{ asset('images/img_ocws/suelos_16.jpg') }}" width="990" height="351" data-caption="#c3"/>
     </div>
-    <div>Esto es un texto y lo pongo porque me da la gana!</div>
+    
+    <span class="orbit-caption" id="c1">
+        <span class="titulo">Arquitectura | <a class="" href="#">ver ocw</a></span>
+        <span class="contenido"><p>asdasdasdasdsad</p></span>
+    </span>
+    <span class="orbit-caption" id="c2">
+    	<span class="titulo">Fotografía | <a href="#">ver ocw</a></span>
+        <span class="contenido"><p>asdasdasdasdasd</p></span>
+    </span>
+    <span class="orbit-caption" id="c3">
+    	<span class="titulo">Suelos | <a href="#">ver ocw</a></span>
+        <span class="contenido"><p>asdasdasdasdasd</p></span>
+    </span>
+
+    <div>
+        <div class="contenido izquierda">
+            <h2>¿Qué es <em>OCW Manager</em>?</h2>
+            <p>Es una plataforma web de la Universidad de Córdoba que permite a sus docentes crear y publicar sus cursos en formato OCW segun los elementos descriptivos de los OCW publicados por el Institulo Tenológico de Massachusetts (MIT).<br/><br/> OCW Manager le permite al docente la gestión completa de sus cursos de forma colaborativa, facilitando aún más el proceso de producción.</p>
+        </div>
+        <div class="contenido derecha">
+            <h2>¿Qué es un OCW?</h2>
+            <p>Un OCW (OpenCourseware) o Curso Virtual Abierto, según lo define el OCWConsortium, es una publicación digital libre y abierta de materiales educativos universitarios y colegios de alta calidad. Éstos materiales son organizados como cursos, y generalmente incluyen los materiales de estudios y herramientas de evaluación así como los contenidos temáticos.<br/><br/> Los OpenCourseWare son libres y de licencia abierta, accesibles cualquiera a través de internet.</p>
+        </div>
+        <div class="limpiar_float"></div>
+    </div>
 {% endblock %}
+
+{% block bottombar%}    
+    <div class="cont-recientes">
+        <div class="recientes"></div>        
+    </div>
+{% endblock %}
+
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('js/nivo/jquery.nivo.slider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.orbit-1.2.3.min.js') }}"></script>
     <script type="text/javascript">
     $(window).load(function() {
-        $('#slider').nivoSlider();
+        $("#slider").orbit({
+            animation: "fade",
+            bullets: true,
+            directionalNav: false,
+            timer: true,
+            advanceSpeed: 5000,
+            animationSpeed: 1200,
+            captionAnimation: "fade",
+            captionAnimationSpeed: 1000 
+        });
     });
     </script>
 {% endblock %}

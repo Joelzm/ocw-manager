@@ -11,9 +11,10 @@ class __TwigTemplate_4afaa110c13baf2adaae59042bb4b546 extends Twig_Template
 
         $this->blocks = array(
             'title' => array($this, 'block_title'),
-            'estilos' => array($this, 'block_estilos'),
+            'stylesheets' => array($this, 'block_stylesheets'),
             'mainmenu' => array($this, 'block_mainmenu'),
             'content' => array($this, 'block_content'),
+            'bottombar' => array($this, 'block_bottombar'),
             'javascripts' => array($this, 'block_javascripts'),
         );
     }
@@ -33,29 +34,29 @@ class __TwigTemplate_4afaa110c13baf2adaae59042bb4b546 extends Twig_Template
         // line 6
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/layout.css"), "html", null, true);
         echo "\" />
+        
         ";
-        // line 7
-        $this->displayBlock('estilos', $context, $blocks);
         // line 8
-        echo "        <link rel=\"shortcut icon\" href=\"";
+        $this->displayBlock('stylesheets', $context, $blocks);
+        // line 9
+        echo "        
+        <link rel=\"shortcut icon\" href=\"";
+        // line 10
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("favicon.png"), "html", null, true);
         echo "\" />
-        <script src=\"";
-        // line 9
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery-1.7.2.min.js"), "html", null, true);
-        echo "\"></script>
+        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js\"></script>
     </head>
     <body>
         <header>
             <div class=\"centro\">
                 <div class=\"logo\">
                     <img src=\"";
-        // line 15
+        // line 17
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/logo_02.jpg"), "html", null, true);
         echo "\" />
                 </div>
                 <nav>";
-        // line 17
+        // line 19
         $this->displayBlock('mainmenu', $context, $blocks);
         echo "</nav>
             </div>
@@ -63,12 +64,19 @@ class __TwigTemplate_4afaa110c13baf2adaae59042bb4b546 extends Twig_Template
         </header>
         <div class=\"centro\">
             ";
-        // line 22
-        $this->displayBlock('content', $context, $blocks);
-        // line 23
-        echo "            ";
-        $this->displayBlock('javascripts', $context, $blocks);
         // line 24
+        $this->displayBlock('content', $context, $blocks);
+        // line 25
+        echo "        </div>
+        ";
+        // line 26
+        $this->displayBlock('bottombar', $context, $blocks);
+        // line 27
+        echo "        <div class=\"centro\">
+            ";
+        // line 28
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 29
         echo "            <footer><strong>OCWManager</strong>. Copyright 2012. Universidad de córdoba. Todos los derechos reservados.</footer>
         </div>
     </body>
@@ -81,22 +89,27 @@ class __TwigTemplate_4afaa110c13baf2adaae59042bb4b546 extends Twig_Template
     {
     }
 
-    // line 7
-    public function block_estilos($context, array $blocks = array())
+    // line 8
+    public function block_stylesheets($context, array $blocks = array())
     {
     }
 
-    // line 17
+    // line 19
     public function block_mainmenu($context, array $blocks = array())
     {
     }
 
-    // line 22
+    // line 24
     public function block_content($context, array $blocks = array())
     {
     }
 
-    // line 23
+    // line 26
+    public function block_bottombar($context, array $blocks = array())
+    {
+    }
+
+    // line 28
     public function block_javascripts($context, array $blocks = array())
     {
         echo " ";
@@ -114,6 +127,6 @@ class __TwigTemplate_4afaa110c13baf2adaae59042bb4b546 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  98 => 23,  93 => 22,  88 => 17,  83 => 7,  78 => 5,  70 => 24,  67 => 23,  65 => 22,  57 => 17,  52 => 15,  43 => 9,  38 => 8,  32 => 6,  28 => 5,  22 => 1,  36 => 7,  33 => 3,  27 => 2,);
+        return array (  111 => 28,  106 => 26,  101 => 24,  96 => 19,  86 => 5,  78 => 29,  76 => 28,  73 => 27,  71 => 26,  68 => 25,  66 => 24,  58 => 19,  43 => 10,  40 => 9,  29 => 5,  23 => 1,  107 => 42,  104 => 41,  91 => 8,  65 => 12,  61 => 11,  57 => 10,  53 => 17,  50 => 7,  44 => 6,  38 => 8,  33 => 6,  30 => 2,);
     }
 }

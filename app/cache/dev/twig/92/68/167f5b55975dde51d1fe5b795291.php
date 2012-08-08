@@ -10,9 +10,10 @@ class __TwigTemplate_9268167f5b55975dde51d1fe5b795291 extends Twig_Template
         $this->parent = $this->env->loadTemplate("OCWmOCWBundle::anonimo.html.twig");
 
         $this->blocks = array(
-            'estilos' => array($this, 'block_estilos'),
+            'stylesheets' => array($this, 'block_stylesheets'),
             'title' => array($this, 'block_title'),
             'content' => array($this, 'block_content'),
+            'bottombar' => array($this, 'block_bottombar'),
             'javascripts' => array($this, 'block_javascripts'),
         );
     }
@@ -28,81 +29,101 @@ class __TwigTemplate_9268167f5b55975dde51d1fe5b795291 extends Twig_Template
     }
 
     // line 2
-    public function block_estilos($context, array $blocks = array())
+    public function block_stylesheets($context, array $blocks = array())
     {
         // line 3
         echo "    <link rel=\"stylesheet\" href=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/default.css"), "html", null, true);
-        echo "\" type=\"text/css'\" media=\"screen\" />
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/orbit-1.2.3.css"), "html", null, true);
+        echo "\" />
     <link rel=\"stylesheet\" href=\"";
         // line 4
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/nivo-slider.css"), "html", null, true);
-        echo "\" type=\"text/css\" media=\"screen\" />
-    <!--<link rel=\"stylesheet\" href=\"";
-        // line 5
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/nivo/demo/style.css"), "html", null, true);
-        echo "\" type=\"text/css\" media=\"screen\" />-->
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/index.css"), "html", null, true);
+        echo "\" />
 ";
     }
 
-    // line 7
+    // line 6
     public function block_title($context, array $blocks = array())
     {
         echo " Inicio ";
     }
 
-    // line 8
+    // line 7
     public function block_content($context, array $blocks = array())
     {
-        // line 9
-        echo "    <div class=\"slider-wrapper theme-default\">
-        <div id=\"slider\" class=\"nivoSlider\">
-            <img src=\"";
+        // line 8
+        echo "    
+    <div id=\"slider\">
+        <img src=\"";
+        // line 10
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/img_ocws/arquitectura_16.jpg"), "html", null, true);
+        echo "\" width=\"990\" height=\"351\"  data-caption=\"#c1\"/>
+        <img src=\"";
         // line 11
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/img_ocws/arquitectura_16.jpg"), "html", null, true);
-        echo "\" data-thumb=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/img_ocws/arquitectura_16.jpg"), "html", null, true);
-        echo "\" alt=\"\" title=\"#arquitectura_caption\"/>
-            <img src=\"";
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/img_ocws/fotografia_16.jpg"), "html", null, true);
+        echo "\" width=\"990\" height=\"351\" data-caption=\"#c2\"/>
+        <img src=\"";
         // line 12
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/img_ocws/fotografia_16.jpg"), "html", null, true);
-        echo "\" data-thumb=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/img_ocws/fotografia_16.jpg"), "html", null, true);
-        echo "\" alt=\"\" title=\"#fotografia_caption\" />
-            <img src=\"";
-        // line 13
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/img_ocws/suelos_16.jpg"), "html", null, true);
-        echo "\" data-thumb=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/img_ocws/suelos_16.jpg"), "html", null, true);
-        echo "\" alt=\"\" data-transition=\"#suelos_caption\" />
-        </div>
-        <div id=\"arquitectura_caption\" class=\"nivo-html-caption\">
-            <strong>This</strong> | ver ocw <br/>
-            Is an example of a <em>HTML</em> caption with <a href=\"#\">a link</a>. 
-        </div>
-        <div id=\"fotografia_caption\" class=\"nivo-html-caption\">
-            <strong>This</strong> | ver ocw <br/>
-            Is an example of a <em>HTML</em> caption with <a href=\"#\">a link</a>.
-        </div>
-        <div id=\"suelos_caption\" class=\"nivo-html-caption\">
-            <strong>This</strong> | ver ocw <br/>
-            Is an example of a <em>HTML</em> caption with <a href=\"#\">a link</a>.
-        </div>
+        echo "\" width=\"990\" height=\"351\" data-caption=\"#c3\"/>
     </div>
-    <div>Esto es un texto y lo pongo porque me da la gana!</div>
+    
+    <span class=\"orbit-caption\" id=\"c1\">
+        <span class=\"titulo\">Arquitectura | <a href=\"#\">ver ocw</a></span>
+        <span class=\"contenido\"><p>asdasdasdasdsad</p></span>
+    </span>
+    <span class=\"orbit-caption\" id=\"c2\">
+    \t<span class=\"titulo\">Fotografía | <a href=\"#\">ver ocw</a></span>
+        <span class=\"contenido\"><p>asdasdasdasdasd</p></span>
+    </span>
+    <span class=\"orbit-caption\" id=\"c3\">
+    \t<span class=\"titulo\">Suelos | <a href=\"#\">ver ocw</a></span>
+        <span class=\"contenido\"><p>asdasdasdasdasd</p></span>
+    </span>
+
+    <div>
+        <div class=\"contenido izquierda\">
+            <h2>¿Qué es <em>OCW Manager</em>?</h2>
+            <p>Es una plataforma web de la Universidad de Córdoba que permite a sus docentes crear y publicar sus cursos en formato OCW segun los elementos descriptivos de los OCW publicados por el Institulo Tenológico de Massachusetts (MIT).<br/><br/> OCW Manager le permite al docente la gestión completa de sus cursos de forma colaborativa, facilitando aún más el proceso de producción.</p>
+        </div>
+        <div class=\"contenido derecha\">
+            <h2>¿Qué es un OCW?</h2>
+            <p>Un OCW (OpenCourseware) o Curso Virtual Abierto, según lo define el OCWConsortium, es una publicación digital libre y abierta de materiales educativos universitarios y colegios de alta calidad. Éstos materiales son organizados como cursos, y generalmente incluyen los materiales de estudios y herramientas de evaluación así como los contenidos temáticos.<br/><br/> Los OpenCourseWare son libres y de licencia abierta, accesibles cualquiera a través de internet.</p>
+        </div>
+        <div class=\"limpiar_float\"></div>
+    </div>
 ";
     }
 
-    // line 30
+    // line 41
+    public function block_bottombar($context, array $blocks = array())
+    {
+        echo "    
+    <div class=\"cont-recientes\">
+        <div class=\"recientes\"></div>        
+    </div>
+";
+    }
+
+    // line 47
     public function block_javascripts($context, array $blocks = array())
     {
-        // line 31
+        // line 48
         echo "    <script type=\"text/javascript\" src=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/nivo/jquery.nivo.slider.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.orbit-1.2.3.min.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\">
     \$(window).load(function() {
-        \$('#slider').nivoSlider();
+        \$(\"#slider\").orbit({
+            animation: \"fade\",
+            bullets: true,
+            directionalNav: false,
+            timer: true,
+            advanceSpeed: 5000,
+            animationSpeed: 1200,
+            captionAnimation: \"fade\",
+            captionAnimationSpeed: 1000 
+        });
     });
     </script>
 ";
@@ -120,6 +141,6 @@ class __TwigTemplate_9268167f5b55975dde51d1fe5b795291 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  98 => 31,  95 => 30,  72 => 13,  66 => 12,  60 => 11,  56 => 9,  53 => 8,  47 => 7,  41 => 5,  37 => 4,  32 => 3,  29 => 2,);
+        return array (  110 => 48,  107 => 47,  97 => 41,  65 => 12,  61 => 11,  57 => 10,  53 => 8,  50 => 7,  44 => 6,  38 => 4,  33 => 3,  30 => 2,);
     }
 }
