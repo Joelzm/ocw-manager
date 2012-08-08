@@ -98,7 +98,8 @@ footer{
     text-align: center;
     padding-top: 5px;
     /*border-top: 1px dashed #ddd;*/
-    margin-top: 7px;
+    margin-top: 5px;
     font-size: 11px;
     color: #888;
+    margin-bottom: 10px;
 }

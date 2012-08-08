@@ -69,15 +69,15 @@ class __TwigTemplate_9268167f5b55975dde51d1fe5b795291 extends Twig_Template
     </div>
     
     <span class=\"orbit-caption\" id=\"c1\">
-        <span class=\"titulo\">Arquitectura | <a href=\"#\">ver ocw</a></span>
+        <span class=\"titulo\">Arquitectura | <a class=\"ver-ocw\" href=\"#\">ver ocw</a></span>
         <span class=\"contenido\"><p>asdasdasdasdsad</p></span>
     </span>
     <span class=\"orbit-caption\" id=\"c2\">
-    \t<span class=\"titulo\">Fotografía | <a href=\"#\">ver ocw</a></span>
+    \t<span class=\"titulo\">Fotografía | <a class=\"ver-ocw\" href=\"#\">ver ocw</a></span>
         <span class=\"contenido\"><p>asdasdasdasdasd</p></span>
     </span>
     <span class=\"orbit-caption\" id=\"c3\">
-    \t<span class=\"titulo\">Suelos | <a href=\"#\">ver ocw</a></span>
+    \t<span class=\"titulo\">Suelos | <a class=\"ver-ocw\" href=\"#\">ver ocw</a></span>
         <span class=\"contenido\"><p>asdasdasdasdasd</p></span>
     </span>
 

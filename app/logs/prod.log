@@ -230,3 +230,4 @@
 [2012-08-07 23:48:28] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /images/background.jpg" (uncaught exception) at C:\wamp\www\ocw-manager\app\cache\prod\classes.php line 4584 [] []
 [2012-08-07 23:49:43] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /images/background.jpg" (uncaught exception) at C:\wamp\www\ocw-manager\app\cache\prod\classes.php line 4584 [] []
 [2012-08-07 23:50:03] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /images/background.jpg" (uncaught exception) at C:\wamp\www\ocw-manager\app\cache\prod\classes.php line 4584 [] []
+[2012-08-08 14:34:14] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /" (uncaught exception) at C:\wamp\www\ocw-manager\app\cache\prod\classes.php line 4584 [] []

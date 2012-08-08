@@ -143,6 +143,18 @@ span.pause.active {
 .orbit-caption .titulo{
 	font-size:17px;
 	color:#f1f1f1;
+        font-variant: small-caps;
+        font-weight: bold;
+}
+
+.orbit-caption .titulo a{
+    color: #da4e09;
+    font-size: 13px;
+    text-decoration: none;    
+}
+
+.orbit-caption .titulo a:hover{
+    text-decoration: underline;
 }
 
 .orbit-caption .contenido{
