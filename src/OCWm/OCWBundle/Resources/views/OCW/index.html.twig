@@ -5,13 +5,11 @@
 {% endblock %}
 {% block title %} Inicio {% endblock %}
 {% block content %}
-    
     <div id="slider">
         <img src="{{ asset('images/img_ocws/arquitectura_16.jpg') }}" width="990" height="351"  data-caption="#c1"/>
         <img src="{{ asset('images/img_ocws/fotografia_16.jpg') }}" width="990" height="351" data-caption="#c2"/>
         <img src="{{ asset('images/img_ocws/suelos_16.jpg') }}" width="990" height="351" data-caption="#c3"/>
     </div>
-    
     <span class="orbit-caption" id="c1">
         <span class="titulo">Arquitectura | <a class="ver-ocw" href="#">ver ocw</a></span>
         <span class="contenido"><p>asdasdasdasdsad</p></span>
@@ -40,11 +38,54 @@
 
 {% block bottombar%}    
     <div class="cont-recientes">
-        <div class="recientes"></div>        
+        <div class="recientes">
+            <div class="centro">
+                <h2>OCWs Recientes</h2>
+                <ul>
+                    <li>
+                        <span class="titulo">Glaciares</span><br/>
+                        <img src="{{ asset('images/img_ocws/thumbs/thumbs_ocw_20.jpg') }}" /><br/>
+                        <span class="descripcion">
+                            Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso.
+                        </span>
+                    </li>
+                    <li>
+                        <span class="titulo">Suelos</span><br/>
+                        <img src="{{ asset('images/img_ocws/thumbs/thumbs_ocw_22.jpg') }}" /><br/>
+                        <span class="descripcion">
+                            Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso.
+                        </span>
+                    </li>
+                    <li>
+                        <span class="titulo">Sistemas Operativos</span><br/>
+                        <img src="{{ asset('images/img_ocws/thumbs/thumbs_ocw_24.jpg') }}" /><br/>
+                        <span class="descripcion">
+                            Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso.
+                        </span>
+                    </li>
+                    <li>
+                        <span class="titulo">Cultivo de peces</span><br/>
+                        <img src="{{ asset('images/img_ocws/thumbs/thumbs_ocw_26.jpg') }}" /><br/>
+                        <span class="descripcion">
+                            Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso.
+                        </span>
+                    </li>
+                    <li>
+                        <span class="titulo">Glaciares</span><br/>
+                        <img src="{{ asset('images/img_ocws/thumbs/thumbs_ocw_28.jpg') }}" /><br/>
+                        <p class="descripcion">
+                            Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso.
+                        </p>
+                    </li>
+                    <div class="limpiar_float"></div>
+                </ul>
+            </div>
+        </div>        
     </div>
 {% endblock %}
 
 {% block javascripts %}
+    {{ parent() }}
     <script type="text/javascript" src="{{ asset('js/jquery.orbit-1.2.3.min.js') }}"></script>
     <script type="text/javascript">
     $(window).load(function() {

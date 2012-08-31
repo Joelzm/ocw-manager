@@ -12,4 +12,8 @@ class OCWController extends Controller
     {
         return $this->render('OCWmOCWBundle:OCW:index.html.twig', array());
     }
+    
+    public function buscarAction(){
+        return $this->render('OCWmOCWBundle:OCW:buscar.html.twig', array());
+    }
 }

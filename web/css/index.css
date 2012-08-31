@@ -4,7 +4,7 @@
 }
 
 .contenido h2 {
-    color: #cd1c03;
+    color: #da4e09;/*#cd1c03;*/
     text-shadow: 0px 1px 3px rgba(0,0,0,0.1);
 }
 
@@ -22,5 +22,47 @@
 .recientes{
     border-top: 1px dashed #ccc;
     border-bottom: 1px dashed #ccc;
-    height: 240px;
+    min-height: 240px;
+    padding-bottom: 17px;
+}
+
+.recientes h2{
+    /*color: #da4e09;*/
+    text-shadow: 0px 1px 3px rgba(0,0,0,0.1);
+}
+
+.recientes ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.recientes ul li{
+    float:left;
+    width: 16%;
+    margin: 0% 2%;
+}
+
+.recientes ul li .titulo{
+    font-size: 15px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.recientes ul li img{
+    border: 3px solid #aaa;
+    margin-bottom: 2px;
+}
+
+.recientes ul li .descripcion{
+    font-size:13px;
+    text-align: justify;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+footer{
+    border-top: none;
 }

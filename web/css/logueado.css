@@ -1,0 +1,28 @@
+header nav ul li .options_user{
+    display: block;
+    background-color: #fafafa;
+    border-bottom: 3px solid #da4e09;
+    float: left;
+    z-index:1002;
+    position: relative;
+    padding: 7px;
+    width: 150px;
+}
+
+header nav ul li .options_user li{
+    float: none;
+}
+
+header nav ul li .options_user li a{
+    display: block;
+    padding: 5px 8px;
+    border-bottom: 1px dashed #eee;
+    text-transform: none;
+    color: #777;
+    font-weight: normal;
+    font-size:13px;
+}
+
+header nav ul li .options_user li a:hover {
+    background-color: #fafafa;
+}

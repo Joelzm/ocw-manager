@@ -44,8 +44,8 @@ header .logo{
 header nav {
     float: right;
     display: block;
-    height: 22px;
-    margin-top: 65px;
+    height: 22px;    
+    margin-top:63px;
 }
 
 header nav ul{
@@ -85,19 +85,54 @@ header nav ul li a img{
     display: block;
     float: left;
     margin-right: 3px;
+    border: 0px;
 }
 
 header nav ul li a span{
     display: block;
     margin-top: 3px;
     float: left;
-} 
+}
+
+header nav ul li #login{
+    float: left;
+    z-index:1002;
+    position: relative;
+    font-size:13px;
+    margin-left:-159px;
+    padding:5px;
+    padding-top: 8px;
+    display: none;    
+}
+
+.activo {
+    border-bottom: 3px solid #da4e09;
+    background-color: #fafafa;
+}
+
+.activo2 {
+    background-color: #fafafa;
+}
+
+.activo2:hover {
+    background-color: #fafafa;
+}
+
+.caja_texto{
+    padding: 4px;
+    margin-bottom: 5px;
+    width: 140px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #555;
+}
+
 
 footer{
     font-style: italic;
     text-align: center;
     padding-top: 5px;
-    /*border-top: 1px dashed #ddd;*/
+    border-top: 1px dashed #ddd;
     margin-top: 5px;
     font-size: 11px;
     color: #888;

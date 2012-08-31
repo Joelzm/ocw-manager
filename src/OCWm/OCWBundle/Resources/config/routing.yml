@@ -1,3 +1,12 @@
-OCWmOCWBundle_homepage:
+home:
     pattern:  /
     defaults: { _controller: OCWmOCWBundle:OCW:index }
+
+buscar:
+   pattern: /app/buscar
+   defaults: { _controller: OCWmOCWBundle:OCW:buscar }
+    
+OCWAnnotations:
+    resource: "@OCWmOCWBundle/Controller/"
+    prefix: /
+    type: annotation

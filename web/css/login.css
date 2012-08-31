@@ -1,0 +1,47 @@
+.login { 
+    padding:5px 30px 10px 30px;
+    margin: 20px auto;
+    border:1px solid #ddd;
+    border-radius: 10px;
+    display: block;
+    width:30%;
+}
+
+.caja_texto{
+    padding: 5px;
+    margin-bottom: 7px;
+    width: 150px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #555;
+}
+
+header nav ul li #login{
+    float: left;
+    z-index:1002;
+    position: relative;
+    font-size:13px;
+    margin-left:-159px;
+    padding:5px;
+    padding-top: 8px;
+    display: none;    
+}
+
+.activo {
+    border-bottom: 3px solid #da4e09;
+    background-color: #eee;
+}
+
+.activo2 {
+    background-color: #eee;
+}
+
+.caja_texto{
+    padding: 4px;
+    margin-bottom: 5px;
+    width: 140px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #555;
+}
+

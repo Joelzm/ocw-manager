@@ -1,8 +1,15 @@
 {% extends "OCWmOCWBundle::layout.html.twig" %}
 {% block mainmenu %}
     <ul>
-        <li><a href="#"><img src="{{ asset('images/icons_mainmenu_05.png') }}" /><span>Inicio</span></a></li>
-        <li><a href="#"><img src="{{ asset('images/icons_mainmenu_07.png') }}" /><span>Buscar</span></a></li>
-        <li><a href="#"><img src="{{ asset('images/icons_mainmenu_09.png') }}" /><span>Login</span></a></li>
+        <li><a href="{{ path("app") }}"><img src="{{ asset('images/icons_mainmenu_05.png') }}" /><span>Inicio</span></a></li>
+        <li><a href="{{ path("buscar") }}"><img src="{{ asset('images/icons_mainmenu_07.png') }}" /><span>Buscar</span></a></li>
+        <li>
+            <a href="{{ user.username }}"><img src="{{ asset('images/icon_user_09.png') }}" /><span>{{ user.username }}</span></a>
+            <ul class="options_user">
+                <li><a href="">Ver perfil</a></li>
+                <li><a href="">Mis OCWs</a></li>
+                <li><a href="{{ path("logout") }}">Salir</a></li>
+            </ul>
+        </li>
     </ul>
 {% endblock %}

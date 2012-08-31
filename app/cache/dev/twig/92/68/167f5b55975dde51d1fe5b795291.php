@@ -52,22 +52,20 @@ class __TwigTemplate_9268167f5b55975dde51d1fe5b795291 extends Twig_Template
     public function block_content($context, array $blocks = array())
     {
         // line 8
-        echo "    
-    <div id=\"slider\">
+        echo "    <div id=\"slider\">
         <img src=\"";
-        // line 10
+        // line 9
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/img_ocws/arquitectura_16.jpg"), "html", null, true);
         echo "\" width=\"990\" height=\"351\"  data-caption=\"#c1\"/>
         <img src=\"";
-        // line 11
+        // line 10
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/img_ocws/fotografia_16.jpg"), "html", null, true);
         echo "\" width=\"990\" height=\"351\" data-caption=\"#c2\"/>
         <img src=\"";
-        // line 12
+        // line 11
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/img_ocws/suelos_16.jpg"), "html", null, true);
         echo "\" width=\"990\" height=\"351\" data-caption=\"#c3\"/>
     </div>
-    
     <span class=\"orbit-caption\" id=\"c1\">
         <span class=\"titulo\">Arquitectura | <a class=\"ver-ocw\" href=\"#\">ver ocw</a></span>
         <span class=\"contenido\"><p>asdasdasdasdsad</p></span>
@@ -95,21 +93,82 @@ class __TwigTemplate_9268167f5b55975dde51d1fe5b795291 extends Twig_Template
 ";
     }
 
-    // line 41
+    // line 39
     public function block_bottombar($context, array $blocks = array())
     {
         echo "    
     <div class=\"cont-recientes\">
-        <div class=\"recientes\"></div>        
+        <div class=\"recientes\">
+            <div class=\"centro\">
+                <h2>OCWs Recientes</h2>
+                <ul>
+                    <li>
+                        <span class=\"titulo\">Glaciares</span><br/>
+                        <img src=\"";
+        // line 47
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/img_ocws/thumbs/thumbs_ocw_20.jpg"), "html", null, true);
+        echo "\" /><br/>
+                        <span class=\"descripcion\">
+                            Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso.
+                        </span>
+                    </li>
+                    <li>
+                        <span class=\"titulo\">Suelos</span><br/>
+                        <img src=\"";
+        // line 54
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/img_ocws/thumbs/thumbs_ocw_22.jpg"), "html", null, true);
+        echo "\" /><br/>
+                        <span class=\"descripcion\">
+                            Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso.
+                        </span>
+                    </li>
+                    <li>
+                        <span class=\"titulo\">Sistemas Operativos</span><br/>
+                        <img src=\"";
+        // line 61
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/img_ocws/thumbs/thumbs_ocw_24.jpg"), "html", null, true);
+        echo "\" /><br/>
+                        <span class=\"descripcion\">
+                            Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso.
+                        </span>
+                    </li>
+                    <li>
+                        <span class=\"titulo\">Cultivo de peces</span><br/>
+                        <img src=\"";
+        // line 68
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/img_ocws/thumbs/thumbs_ocw_26.jpg"), "html", null, true);
+        echo "\" /><br/>
+                        <span class=\"descripcion\">
+                            Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso.
+                        </span>
+                    </li>
+                    <li>
+                        <span class=\"titulo\">Glaciares</span><br/>
+                        <img src=\"";
+        // line 75
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/img_ocws/thumbs/thumbs_ocw_28.jpg"), "html", null, true);
+        echo "\" /><br/>
+                        <p class=\"descripcion\">
+                            Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso. Esta es la descripción del curso.
+                        </p>
+                    </li>
+                    <div class=\"limpiar_float\"></div>
+                </ul>
+            </div>
+        </div>        
     </div>
 ";
     }
 
-    // line 47
+    // line 87
     public function block_javascripts($context, array $blocks = array())
     {
-        // line 48
-        echo "    <script type=\"text/javascript\" src=\"";
+        // line 88
+        echo "    ";
+        $this->displayParentBlock("javascripts", $context, $blocks);
+        echo "
+    <script type=\"text/javascript\" src=\"";
+        // line 89
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.orbit-1.2.3.min.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\">
@@ -141,6 +200,6 @@ class __TwigTemplate_9268167f5b55975dde51d1fe5b795291 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  110 => 48,  107 => 47,  97 => 41,  65 => 12,  61 => 11,  57 => 10,  53 => 8,  50 => 7,  44 => 6,  38 => 4,  33 => 3,  30 => 2,);
+        return array (  170 => 89,  165 => 88,  162 => 87,  147 => 75,  137 => 68,  127 => 61,  117 => 54,  107 => 47,  95 => 39,  64 => 11,  60 => 10,  56 => 9,  53 => 8,  50 => 7,  44 => 6,  38 => 4,  33 => 3,  30 => 2,);
     }
 }

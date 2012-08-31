@@ -1,8 +1,52 @@
 {% extends "OCWmOCWBundle::layout.html.twig" %}
 {% block mainmenu %}
     <ul>
-        <li><a href="#"><img src="{{ asset('images/icons_mainmenu_05.png') }}" /><span>Inicio</span></a></li>
-        <li><a href="#"><img src="{{ asset('images/icons_mainmenu_07.png') }}" /><span>Buscar</span></a></li>
-        <li><a href="#"><img src="{{ asset('images/icons_mainmenu_09.png') }}" /><span>Login</span></a></li>
+        <li><a href="{{ path("home") }}"><img src="{{ asset('images/icons_mainmenu_05.png') }}" /><span>Inicio</span></a></li>
+        <li><a href="{{ path("buscar") }}"><img src="{{ asset('images/icons_mainmenu_07.png') }}" /><span>Buscar</span></a></li>
+        <li>
+            <a class="signin" href="#"><img src="{{ asset('images/icons_mainmenu_09.png') }}" /><span>Login</span></a>
+            <div id="login">
+                <form action="{{ path('login_check') }}" method="post">
+                    <table border=0 align="center">
+                        <tr>
+                            <td align="right"><label for="username">Usuario:</label></td>
+                            <td align="left" width="147"><input class="caja_texto" type="text" id="username" name="_username" value="" /></td>
+                        </tr>
+                        <tr>
+                            <td align="right"><label for="password">Contraseña:</label></td>
+                            <td align="left" width="147"><input class="caja_texto" type="password" id="password" name="_password" /></td>
+                        </tr>
+                        <tr>
+                            <td align="center" colspan="2"><input type="submit" name="login" value="Entrar" /></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </li>
+        
     </ul>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".signin").click(function(e) {  
+                e.preventDefault();
+                $("div#login").toggle();
+		$(".signin").toggleClass("activo2");
+                $("div#login").toggleClass("activo");
+            });
+			
+            $("div#login").mouseup(function() {
+		return false
+            });
+            $(document).mouseup(function(e) {
+		if($(e.target).parent(".signin").length==0) {
+                    $(".signin").removeClass("activo2");
+                    $("div#login").removeClass("activo");
+                    $("div#login").hide();
+		}
+            });					
+        });
+    </script>
 {% endblock %}

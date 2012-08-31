@@ -73,13 +73,13 @@ class __TwigTemplate_4afaa110c13baf2adaae59042bb4b546 extends Twig_Template
         $this->displayBlock('bottombar', $context, $blocks);
         // line 27
         echo "        <div class=\"centro\">
-            ";
-        // line 28
-        $this->displayBlock('javascripts', $context, $blocks);
-        // line 29
-        echo "            <footer><strong>OCWManager</strong>. Copyright 2012. Universidad de córdoba. Todos los derechos reservados.</footer>
+            <footer><strong>OCWManager</strong>. Copyright 2012. Universidad de córdoba. Todos los derechos reservados.</footer>
         </div>
-    </body>
+        ";
+        // line 30
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 31
+        echo "    </body>
 </html>
 ";
     }
@@ -109,7 +109,7 @@ class __TwigTemplate_4afaa110c13baf2adaae59042bb4b546 extends Twig_Template
     {
     }
 
-    // line 28
+    // line 30
     public function block_javascripts($context, array $blocks = array())
     {
         echo " ";
@@ -127,6 +127,6 @@ class __TwigTemplate_4afaa110c13baf2adaae59042bb4b546 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  111 => 28,  106 => 26,  101 => 24,  96 => 19,  86 => 5,  78 => 29,  76 => 28,  73 => 27,  71 => 26,  68 => 25,  66 => 24,  58 => 19,  43 => 10,  40 => 9,  29 => 5,  23 => 1,  107 => 42,  104 => 41,  91 => 8,  65 => 12,  61 => 11,  57 => 10,  53 => 17,  50 => 7,  44 => 6,  38 => 8,  33 => 6,  30 => 2,);
+        return array (  111 => 30,  106 => 26,  101 => 24,  96 => 19,  91 => 8,  86 => 5,  80 => 31,  78 => 30,  73 => 27,  71 => 26,  68 => 25,  66 => 24,  58 => 19,  43 => 10,  23 => 1,  40 => 9,  36 => 5,  32 => 4,  29 => 5,  26 => 2,  167 => 90,  164 => 89,  149 => 77,  139 => 70,  129 => 63,  119 => 56,  109 => 49,  97 => 41,  65 => 12,  61 => 11,  57 => 10,  53 => 17,  50 => 7,  44 => 6,  38 => 8,  33 => 6,  30 => 2,);
     }
 }

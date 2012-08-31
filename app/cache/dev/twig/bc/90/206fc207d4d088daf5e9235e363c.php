@@ -11,6 +11,7 @@ class __TwigTemplate_bc90206fc207d4d088daf5e9235e363c extends Twig_Template
 
         $this->blocks = array(
             'mainmenu' => array($this, 'block_mainmenu'),
+            'javascripts' => array($this, 'block_javascripts'),
         );
     }
 
@@ -29,19 +30,74 @@ class __TwigTemplate_bc90206fc207d4d088daf5e9235e363c extends Twig_Template
     {
         // line 3
         echo "    <ul>
-        <li><a href=\"#\"><img src=\"";
+        <li><a href=\"";
         // line 4
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("home"), "html", null, true);
+        echo "\"><img src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/icons_mainmenu_05.png"), "html", null, true);
         echo "\" /><span>Inicio</span></a></li>
-        <li><a href=\"#\"><img src=\"";
+        <li><a href=\"";
         // line 5
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("buscar"), "html", null, true);
+        echo "\"><img src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/icons_mainmenu_07.png"), "html", null, true);
         echo "\" /><span>Buscar</span></a></li>
-        <li><a href=\"#\"><img src=\"";
-        // line 6
+        <li>
+            <a class=\"signin\" href=\"#\"><img src=\"";
+        // line 7
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/icons_mainmenu_09.png"), "html", null, true);
-        echo "\" /><span>Login</span></a></li>
+        echo "\" /><span>Login</span></a>
+            <div id=\"login\">
+                <form action=\"";
+        // line 9
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("login_check"), "html", null, true);
+        echo "\" method=\"post\">
+                    <table border=0 align=\"center\">
+                        <tr>
+                            <td align=\"right\"><label for=\"username\">Usuario:</label></td>
+                            <td align=\"left\" width=\"147\"><input class=\"caja_texto\" type=\"text\" id=\"username\" name=\"_username\" value=\"\" /></td>
+                        </tr>
+                        <tr>
+                            <td align=\"right\"><label for=\"password\">Contraseña:</label></td>
+                            <td align=\"left\" width=\"147\"><input class=\"caja_texto\" type=\"password\" id=\"password\" name=\"_password\" /></td>
+                        </tr>
+                        <tr>
+                            <td align=\"center\" colspan=\"2\"><input type=\"submit\" name=\"login\" value=\"Entrar\" /></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </li>
+        
     </ul>
+";
+    }
+
+    // line 30
+    public function block_javascripts($context, array $blocks = array())
+    {
+        // line 31
+        echo "    <script type=\"text/javascript\">
+        \$(document).ready(function() {
+            \$(\".signin\").click(function(e) {  
+                e.preventDefault();
+                \$(\"div#login\").toggle();
+\t\t\$(\".signin\").toggleClass(\"activo2\");
+                \$(\"div#login\").toggleClass(\"activo\");
+            });
+\t\t\t
+            \$(\"div#login\").mouseup(function() {
+\t\treturn false
+            });
+            \$(document).mouseup(function(e) {
+\t\tif(\$(e.target).parent(\".signin\").length==0) {
+                    \$(\".signin\").removeClass(\"activo2\");
+                    \$(\"div#login\").removeClass(\"activo\");
+                    \$(\"div#login\").hide();
+\t\t}
+            });\t\t\t\t\t
+        });
+    </script>
 ";
     }
 
@@ -57,6 +113,6 @@ class __TwigTemplate_bc90206fc207d4d088daf5e9235e363c extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  40 => 6,  36 => 5,  26 => 2,  98 => 31,  95 => 30,  72 => 13,  66 => 12,  60 => 11,  56 => 9,  53 => 8,  47 => 7,  41 => 5,  37 => 4,  32 => 4,  29 => 3,);
+        return array (  78 => 31,  75 => 30,  51 => 9,  46 => 7,  39 => 5,  33 => 4,  30 => 3,  27 => 2,);
     }
 }
