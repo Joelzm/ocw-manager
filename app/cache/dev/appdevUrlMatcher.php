@@ -140,13 +140,147 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // OCWmOCWBundle_homepage
+        // home
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'OCWmOCWBundle_homepage');
+                return $this->redirect($pathinfo.'/', 'home');
             }
-            return array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\OCWController::indexAction',  '_route' => 'OCWmOCWBundle_homepage',);
+            return array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\OCWController::indexAction',  '_route' => 'home',);
         }
+
+        // buscar
+        if ($pathinfo === '/app/buscar') {
+            return array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\OCWController::buscarAction',  '_route' => 'buscar',);
+        }
+
+        // admin_role
+        if (rtrim($pathinfo, '/') === '/app/role') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'admin_role');
+            }
+            return array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\RoleController::indexAction',  '_route' => 'admin_role',);
+        }
+
+        // admin_role_show
+        if (0 === strpos($pathinfo, '/app/role') && preg_match('#^/app/role/(?P<id>[^/]+?)/show$#s', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\RoleController::showAction',)), array('_route' => 'admin_role_show'));
+        }
+
+        // admin_role_new
+        if ($pathinfo === '/app/role/new') {
+            return array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\RoleController::newAction',  '_route' => 'admin_role_new',);
+        }
+
+        // admin_role_create
+        if ($pathinfo === '/app/role/create') {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_admin_role_create;
+            }
+            return array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\RoleController::createAction',  '_route' => 'admin_role_create',);
+        }
+        not_admin_role_create:
+
+        // admin_role_edit
+        if (0 === strpos($pathinfo, '/app/role') && preg_match('#^/app/role/(?P<id>[^/]+?)/edit$#s', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\RoleController::editAction',)), array('_route' => 'admin_role_edit'));
+        }
+
+        // admin_role_update
+        if (0 === strpos($pathinfo, '/app/role') && preg_match('#^/app/role/(?P<id>[^/]+?)/update$#s', $pathinfo, $matches)) {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_admin_role_update;
+            }
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\RoleController::updateAction',)), array('_route' => 'admin_role_update'));
+        }
+        not_admin_role_update:
+
+        // admin_role_delete
+        if (0 === strpos($pathinfo, '/app/role') && preg_match('#^/app/role/(?P<id>[^/]+?)/delete$#s', $pathinfo, $matches)) {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_admin_role_delete;
+            }
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\RoleController::deleteAction',)), array('_route' => 'admin_role_delete'));
+        }
+        not_admin_role_delete:
+
+        // login
+        if ($pathinfo === '/app/login') {
+            return array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\SecurityController::loginAction',  '_route' => 'login',);
+        }
+
+        // login_check
+        if ($pathinfo === '/app/login_check') {
+            return array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\SecurityController::loginAction',  '_route' => 'login_check',);
+        }
+
+        // app
+        if (rtrim($pathinfo, '/') === '/app') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'app');
+            }
+            return array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\SecurityController::appAction',  '_route' => 'app',);
+        }
+
+        // logout
+        if ($pathinfo === '/app/logout') {
+            return array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'logout',);
+        }
+
+        // admin_user
+        if (rtrim($pathinfo, '/') === '/app/user') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'admin_user');
+            }
+            return array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\UserController::indexAction',  '_route' => 'admin_user',);
+        }
+
+        // admin_user_show
+        if (0 === strpos($pathinfo, '/app/user') && preg_match('#^/app/user/(?P<id>[^/]+?)/show$#s', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\UserController::showAction',)), array('_route' => 'admin_user_show'));
+        }
+
+        // admin_user_new
+        if ($pathinfo === '/app/user/new') {
+            return array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\UserController::newAction',  '_route' => 'admin_user_new',);
+        }
+
+        // admin_user_create
+        if ($pathinfo === '/app/user/create') {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_admin_user_create;
+            }
+            return array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\UserController::createAction',  '_route' => 'admin_user_create',);
+        }
+        not_admin_user_create:
+
+        // admin_user_edit
+        if (0 === strpos($pathinfo, '/app/user') && preg_match('#^/app/user/(?P<id>[^/]+?)/edit$#s', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\UserController::editAction',)), array('_route' => 'admin_user_edit'));
+        }
+
+        // admin_user_update
+        if (0 === strpos($pathinfo, '/app/user') && preg_match('#^/app/user/(?P<id>[^/]+?)/update$#s', $pathinfo, $matches)) {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_admin_user_update;
+            }
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\UserController::updateAction',)), array('_route' => 'admin_user_update'));
+        }
+        not_admin_user_update:
+
+        // admin_user_delete
+        if (0 === strpos($pathinfo, '/app/user') && preg_match('#^/app/user/(?P<id>[^/]+?)/delete$#s', $pathinfo, $matches)) {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_admin_user_delete;
+            }
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\UserController::deleteAction',)), array('_route' => 'admin_user_delete'));
+        }
+        not_admin_user_delete:
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }

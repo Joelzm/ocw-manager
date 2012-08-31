@@ -33,7 +33,26 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        '_configurator_home' => true,
        '_configurator_step' => true,
        '_configurator_final' => true,
-       'OCWmOCWBundle_homepage' => true,
+       'home' => true,
+       'buscar' => true,
+       'admin_role' => true,
+       'admin_role_show' => true,
+       'admin_role_new' => true,
+       'admin_role_create' => true,
+       'admin_role_edit' => true,
+       'admin_role_update' => true,
+       'admin_role_delete' => true,
+       'login' => true,
+       'login_check' => true,
+       'app' => true,
+       'logout' => true,
+       'admin_user' => true,
+       'admin_user_show' => true,
+       'admin_user_new' => true,
+       'admin_user_create' => true,
+       'admin_user_edit' => true,
+       'admin_user_update' => true,
+       'admin_user_delete' => true,
     );
 
     /**
@@ -157,8 +176,103 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (), array (  '_controller' => 'Sensio\\Bundle\\DistributionBundle\\Controller\\ConfiguratorController::finalAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/_configurator/final',  ),));
     }
 
-    private function getOCWmOCWBundle_homepageRouteInfo()
+    private function gethomeRouteInfo()
     {
         return array(array (), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\OCWController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/',  ),));
+    }
+
+    private function getbuscarRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\OCWController::buscarAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/app/buscar',  ),));
+    }
+
+    private function getadmin_roleRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\RoleController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/app/role/',  ),));
+    }
+
+    private function getadmin_role_showRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\RoleController::showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/show',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/app/role',  ),));
+    }
+
+    private function getadmin_role_newRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\RoleController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/app/role/new',  ),));
+    }
+
+    private function getadmin_role_createRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\RoleController::createAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/app/role/create',  ),));
+    }
+
+    private function getadmin_role_editRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\RoleController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/edit',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/app/role',  ),));
+    }
+
+    private function getadmin_role_updateRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\RoleController::updateAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/update',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/app/role',  ),));
+    }
+
+    private function getadmin_role_deleteRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\RoleController::deleteAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/delete',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/app/role',  ),));
+    }
+
+    private function getloginRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\SecurityController::loginAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/app/login',  ),));
+    }
+
+    private function getlogin_checkRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\SecurityController::loginAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/app/login_check',  ),));
+    }
+
+    private function getappRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\SecurityController::appAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/app/',  ),));
+    }
+
+    private function getlogoutRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\SecurityController::logoutAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/app/logout',  ),));
+    }
+
+    private function getadmin_userRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\UserController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/app/user/',  ),));
+    }
+
+    private function getadmin_user_showRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\UserController::showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/show',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/app/user',  ),));
+    }
+
+    private function getadmin_user_newRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\UserController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/app/user/new',  ),));
+    }
+
+    private function getadmin_user_createRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\UserController::createAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/app/user/create',  ),));
+    }
+
+    private function getadmin_user_editRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\UserController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/edit',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/app/user',  ),));
+    }
+
+    private function getadmin_user_updateRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\UserController::updateAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/update',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/app/user',  ),));
+    }
+
+    private function getadmin_user_deleteRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'OCWm\\OCWBundle\\Controller\\UserController::deleteAction',), array (  '_method' => 'post',), array (  0 =>   array (    0 => 'text',    1 => '/delete',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/app/user',  ),));
     }
 }
