@@ -38,6 +38,38 @@ class Pregunta
     {
         return $this->id;
     }
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Evaluacion", inversedBy="preguntas")
+     * @ORM\JoinColumn(name="evaluacion_id", referencedColumnName="id")
+     * @return integer
+     */
+    private $evaluacion;
+    
+    public function setEvaluacion(\OCWm\OCWBundle\Entity\Evaluacion $evaluacion){
+        $this->evaluacion = $evaluacion;
+    }
+    
+    public function getEvaluacion(){
+        return $this->evaluacion;
+    }
+    
+    /**
+     *@ORM\OneToMany(targetEntity="Respuesta", mappedBy="pregunta")
+     */
+    private $respuestas;
+    
+    public function addRespuesta(\OCWm\OCWBundle\Entity\Respuesta $respuesta){
+        $this->respuestas[] = $respuesta;
+    }
+    
+    public function getRespuestas(){
+        return $this->respuestas;
+    }
+    
+    public function __construct(){
+        $this->respuestas = \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Set enunciado

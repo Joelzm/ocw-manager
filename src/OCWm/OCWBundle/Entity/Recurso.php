@@ -36,11 +36,26 @@ class Recurso
     private $path;
 
     /**
-     * @var integer $tiporecurso_id
-     *
-     * @ORM\Column(name="tiporecurso_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="TipoRecurso", inversedBy="recursos")
+     * @ORM\JoinColumn(name="tiporecurso_id", referencedColumnName="id")
+     * @return integer
      */
-    private $tiporecurso_id;
+    private $tiporecurso;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="OCW", inversedBy="recursos") 
+     * @ORM\JoinColumn(name="ocw_id", referencedColumnName="id")
+     * @return integer
+     */
+    private $ocw;
+    
+    public function setOcw(\OCWm\OCWBundle\Entity\OCW $ocw){
+        $this->ocw = $ocw;
+    }
+    
+    public function getOcw(){
+        return $this->ocw;
+    }
 
 
     /**
@@ -93,23 +108,13 @@ class Recurso
         return $this->path;
     }
 
-    /**
-     * Set tiporecurso_id
-     *
-     * @param integer $tiporecursoId
-     */
-    public function setTiporecursoId($tiporecursoId)
+    public function setTiporecurso(\OCWm\OCWBundle\Entity\TipoRecurso $tiporecurso)
     {
-        $this->tiporecurso_id = $tiporecursoId;
+        $this->tiporecurso = $tiporecurso;
     }
 
-    /**
-     * Get tiporecurso_id
-     *
-     * @return integer 
-     */
-    public function getTiporecursoId()
+    public function getTiporecurso()
     {
-        return $this->tiporecurso_id;
+        return $this->tiporecurso;
     }
 }

@@ -3,6 +3,7 @@
 namespace OCWm\OCWBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * OCWm\OCWBundle\Entity\OCW
@@ -50,11 +51,11 @@ class OCW
     private $val_neg;
 
     /**
-     * @var integer $areaconocimiento_id
-     *
-     * @ORM\Column(name="areaconocimiento_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="AreaConocimiento", inversedBy="ocws")
+     * @ORM\JoinColumn(name="areaconocimiento_id", referencedColumnName="id")
+     * @return integer
      */
-    private $areaconocimiento_id;
+    private $areaconocimiento;
 
     /**
      * @var string $img_portada
@@ -116,16 +117,143 @@ class OCW
      * @var date $creado
      *
      * @ORM\Column(name="creado", type="date")
+     * @Gedmo\Timestampable(on="create")
      */
     private $creado;
 
     /**
      * @var date $modificado
      *
-     * @ORM\Column(name="modificado", type="date")
+     * @ORM\Column(name="modificado", type="date", nullable="true")
+     * @Gedmo\Timestampable(on="update")
      */
     private $modificado;
-
+    
+    /**
+     * @var string $slug 
+     * @ORM\Column(name="slug", type="string", length=1000)
+     * @Gedmo\Slug(fields={"nombre"})
+     */
+    private $slug;
+    
+    public function setSlug($slug){
+        $this->slug = $slug;
+    }
+    
+    public function getSlug(){
+        return $this->slug;
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="TemaDiscusion", mappedBy="ocw")
+     */
+    private $temasdiscusion;
+    
+    public function addTemaDiscusion(\OCWm\OCWBundle\Entity\TemaDiscusion $temadiscusion){
+        $this->temasdiscusion[] = $temadiscusion;
+    }
+    
+    public function getTemasDiscusion(){
+        return $this->temasdiscusion;
+    }
+    
+               
+    /**
+     * @ORM\OneToMany(targetEntity="Comentario", mappedBy="ocw")
+     */
+    private $comentarios;
+    
+    public function addComentario(\OCWm\OCWBundle\Entity\OCW $ocw){
+        $this->comentarios[] = $ocw;
+    }
+    
+    public function getComentarios(){
+        return $this->comentarios;
+    }
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="User")
+     * @ORM\JoinTable(name="colaboradores", joinColumns={@ORM\JoinColumn(name="ocw_id", referencedColumnName="id")}, inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")})
+     */
+    private $colaboradores;
+    
+    /**
+     * Set colaborador
+     * @param \OCWm\OCWBundle\Entity\User $colaborador 
+     */
+    public function addColaborador(\OCWm\OCWBundle\Entity\User $colaborador){
+        $this->colaboradores[] = $colaborador;
+    }
+    
+    public function setColaboradores($colaboradores){
+        $this->colaboradores = $colaboradores;
+    }
+    
+    /**
+     * Get colaboradores
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getColaboradores(){
+        return $this->colaboradores;
+    }
+    
+    /**
+     * get usuariosColaboradores
+     * @return \Doctrine\Common\Collections\ArrayCollection 
+     */
+    public function getUsuariosColaboradores(){
+        return $this->colaboradores->toArray();
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Evaluacion", mappedBy="ocw")
+     */
+    private $evaluaciones;
+    
+    public function addEvaluacion(\OCWm\OCWBundle\Entity\Evaluacion $evaluacion){
+        $this->evaluaciones[] = $evaluacion;
+    }
+    
+    public function getEvaluaciones(){
+        return $this->evaluaciones;
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Recurso", mappedBy="ocw")
+     */
+    private $recursos;
+    
+    public function addRecurso(\OCWm\OCWBundle\Entity\Recurso $recurso){
+        $this->recursos[] = $recurso;
+    }
+    
+    public function getRecursos(){
+        return $this->recursos;
+    }
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="ocws") 
+     * @@RM\JoinColunm(name="autor_id"), referencedColunmName="id")
+     * @return integer
+     */
+    private $autor;
+    
+    public function setAutor(\OCWm\OCWBundle\Entity\User $autor){
+        $this->autor = $autor;
+    }
+    
+    public function getAutor(){
+        return $this->autor;
+    }
+    
+    public function __construct(){
+        $this->comentarios = \Doctrine\Common\Collections\ArrayCollection();
+        $this->evaluaciones = \Doctrine\Common\Collections\ArrayCollection();
+        $this->recursos = \Doctrine\Common\Collections\ArrayCollection();
+        $this->colaboradores = \Doctrine\Common\Collections\ArrayCollection();
+        $this->temasdiscusion = \Doctrine\Common\Collections\ArrayCollection();
+        $this->posts = \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -217,24 +345,14 @@ class OCW
         return $this->val_neg;
     }
 
-    /**
-     * Set areaconocimiento_id
-     *
-     * @param integer $areaconocimientoId
-     */
-    public function setAreaconocimientoId($areaconocimientoId)
+    public function setAreaConocimiento(\OCWm\OCWBundle\Entity\AreaConocimiento $areaconocimiento)
     {
-        $this->areaconocimiento_id = $areaconocimientoId;
+        $this->areaconocimiento = $areaconocimiento;
     }
 
-    /**
-     * Get areaconocimiento_id
-     *
-     * @return integer 
-     */
-    public function getAreaconocimientoId()
+    public function getAreaConocimiento()
     {
-        return $this->areaconocimiento_id;
+        return $this->areaconocimiento;
     }
 
     /**

@@ -74,12 +74,86 @@ class User implements UserInterface {
     }
     
     /**
-     * @ORM\Column(name="foto", type="string", length="1000")
+     * @ORM\Column(name="foto", nullable="true", type="string", length="1000")
      */
     private $foto;
     
+    public function setFoto($foto){
+        $this->foto = $foto;
+    }
+    
+    public function getFoto(){
+        return $this->foto;
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="OCW", mappedBy="autor")
+     */
+    private $ocws;
+    
+    public function addOcw(\OCWm\OCWBundle\Entity\OCW $ocw){
+        $this->ocws[] = $ocw;
+    }
+    
+    public function getOcws(){
+        return $ocws;
+    }
+    
+     /**
+     * @ORM\OneToMany(targetEntity="TemaDiscusion", mappedBy="autor")
+     */
+    private $temasdiscusion;
+    
+    public function addTemaDiscusion(\OCWm\OCWBundle\Entity\TemaDiscusion $temadiscusion){
+        $this->temasdiscusion[] = $temadiscusion;
+    }
+    
+    public function getTemasDiscusion(){
+        return $this->temasdiscusion;
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="autor")
+     */
+    private $posts;
+    
+    /**
+     * Set posts
+     *
+     * @param \OCWm\OCWBundle\Entity\Post $post
+     */
+    public function addPost(\OCWm\OCWBundle\Entity\Post $post)
+    {
+        $this->posts = $post;
+    }
+
+    /**
+     * Get posts
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection 
+     */
+    public function getPosts()
+    {
+        return $this->posts;
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Comentario", mappedBy="usuario")
+     */
+    private $comentarios;
+    
+    public function addComentario(\OCWm\OCWBundle\Entity\Comentario $comentario){
+        $this->comentarios[] = $comentario;
+    }
+    
+    public function getComentarios(){
+        return $this->comentarios;
+    }
+    
     public function __construct(){
         $this->user_roles = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->comentarios = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ocws = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -128,6 +202,10 @@ class User implements UserInterface {
      */
     public function setSalt($salt){
         $this->salt = $salt;
+    }
+    
+    public function __toString(){
+        return $this->getPNombre()." ".$this->getPApellido();
     }
     
     /**
@@ -229,6 +307,8 @@ class User implements UserInterface {
     public function getRoles(){
         return $this->user_roles->toArray();
     }
+    
+    
     
     /**
      * Compares this user to another to determinate if they are the same

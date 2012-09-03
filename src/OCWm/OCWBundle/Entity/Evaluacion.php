@@ -27,6 +27,38 @@ class Evaluacion
      * @ORM\Column(name="nombre", type="string", length=255)
      */
     private $nombre;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="OCW", inversedBy="comentarios")
+     * @ORM\JoinColumn(name="ocw_id", referencedColumnName="id")
+     * @return integer
+     */
+    private $ocw;
+    
+    public function setOcw(\OCWm\OCWBundle\Entity\OCW $ocw){
+        $this->ocw = $ocw;
+    }
+    
+    public function getOcw(){
+        return $this->ocw;
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Pregunta", mappedBy="evaluacion")
+     */
+    private $preguntas;
+    
+    public function addPregunta(\OCWm\OCWBundle\Entity\Pregunta $pregunta){
+        $this->preguntas[] = $pregunta;
+    }
+    
+    public function getPreguntas(){
+        return $this->preguntas;
+    }
+    
+    public function __construct(){
+        $this->preguntas = \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**

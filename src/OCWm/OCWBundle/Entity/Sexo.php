@@ -75,4 +75,12 @@ class Sexo
     {
         return $this->nombre;
     }
+    
+    public function __toString(){
+        return $this->getNombre();
+    }
+    
+    public function getSexo(){
+        return $this->getNombre();
+    }
 }

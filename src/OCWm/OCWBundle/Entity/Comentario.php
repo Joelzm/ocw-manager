@@ -3,6 +3,7 @@
 namespace OCWm\OCWBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * OCWm\OCWBundle\Entity\Comentario
@@ -29,18 +30,49 @@ class Comentario
     private $contenido;
 
     /**
-     * @var integer $ocw_id
-     *
-     * @ORM\Column(name="ocw_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="OCW", inversedBy="comentarios")
+     * @ORM\JoinColumn(name="ocw_id", referencedColumnName="id")
+     * @return integer
      */
-    private $ocw_id;
+    private $ocw;
+    
+    public function setOcw(\OCWm\OCWBundle\Entity\OCW $ocw){
+        $this->ocw = $ocw;
+    }
+    
+    public function getOcw(){
+        return $this->ocw;
+    }
 
     /**
-     * @var integer $usuario_id
-     *
-     * @ORM\Column(name="usuario_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="comentarios")
+     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
+     * @return integer
      */
-    private $usuario_id;
+    private $usuario;
+    
+    public function setUsuario(\OCWm\OCWBundle\Entity\User $usuario){
+        $this->usuario = $usuario;
+    }
+    
+    public function getUsuario(){
+        return $this->usuario;
+    }
+    
+    /**
+     * @var date $creado
+     * @ORM\Column(name="creado", type="date") 
+     * @Gedmo\Timestampable(on="create")
+     */
+    private $creado;
+    
+    public function setCreado($creado){
+        $this->creado = $creado;
+    }
+    
+    public function getCreado(){
+        return $this->creado;
+    }
 
 
     /**
@@ -71,45 +103,5 @@ class Comentario
     public function getContenido()
     {
         return $this->contenido;
-    }
-
-    /**
-     * Set ocw_id
-     *
-     * @param integer $ocwId
-     */
-    public function setOcwId($ocwId)
-    {
-        $this->ocw_id = $ocwId;
-    }
-
-    /**
-     * Get ocw_id
-     *
-     * @return integer 
-     */
-    public function getOcwId()
-    {
-        return $this->ocw_id;
-    }
-
-    /**
-     * Set usuario_id
-     *
-     * @param integer $usuarioId
-     */
-    public function setUsuarioId($usuarioId)
-    {
-        $this->usuario_id = $usuarioId;
-    }
-
-    /**
-     * Get usuario_id
-     *
-     * @return integer 
-     */
-    public function getUsuarioId()
-    {
-        return $this->usuario_id;
     }
 }

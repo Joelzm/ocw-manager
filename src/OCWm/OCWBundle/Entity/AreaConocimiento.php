@@ -27,6 +27,23 @@ class AreaConocimiento
      * @ORM\Column(name="nombre", type="string", length=255)
      */
     private $nombre;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="OCW", mappedBy="areaconocimiento") 
+     */
+    private $ocws;
+    
+    public function addOcw(\OCWm\OCWBundle\Entity\OCW $ocw){
+        $this->ocws[] = $ocw;
+    }
+    
+    public function getOcws(){
+        return $this->ocws;
+    }
+    
+    public function __construct(){
+        $this->ocws = \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
